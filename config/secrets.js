@@ -3,7 +3,7 @@ module.exports = {
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
-  localAuth: true,
+  localAuth: false,
 
   mailgun: {
     login: process.env.MAILGUN_LOGIN || 'Your Mailgun SMTP Username',

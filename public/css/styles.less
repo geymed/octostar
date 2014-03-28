@@ -2,7 +2,7 @@
 @import (less) "lib/font-awesome.min.css";
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
-@import "themes/default";
+@import "themes/flatly";
 
 // Scaffolding
 // -------------------------
@@ -44,13 +44,17 @@ body {
 }
 
 .navbar-brand {
-  background-image: url('../img/npm-logo.png');
+  background-image: url('../img/octostar.png');
   background-repeat: no-repeat;
-  background-size: 40px;
+  background-size: 35px;
   background-position: left center;
   padding-left: 50px;
   margin-left: 15px;
   height: 45px;
+  &:hover{
+
+    background-image: url('../img/octostar-hover.png');
+  }
 }
 
 // Social Buttons
@@ -95,4 +99,35 @@ body {
   color: #fff;
   padding: 3px;
   bottom: 25px;
+}
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+margin: 20px 0;
+padding: 15px 30px 15px 15px;
+border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+margin-top: 0;
+}
+.bs-callout p:last-child {
+margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+background-color: #fcf2f2;
+border-color: #d9534f;
+}
+.bs-callout-warning {
+background-color: #fefbed;
+border-color: #f0ad4e;
+}
+.bs-callout-info {
+background-color: #f0f7fd;
+border-color: #5bc0de;
 }

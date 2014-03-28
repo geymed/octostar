@@ -44,7 +44,9 @@
     "twit": "~1.1.12",
     "underscore": "~1.6.0",
     "uglify-js": "~2.4.12",
-    "validator": "~3.4.0"
+    "validator": "~3.4.0",
+    "curly": "^0.6.2",
+    "curlrequest": "^0.4.1"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

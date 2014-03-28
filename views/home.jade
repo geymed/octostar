@@ -1,8 +1,36 @@
 extends layout
 
 block content
-  h1 Bootstrap starter template
-  p.lead
-    | Use this document as a way to quickly start any new project.
-    br
-    | All you get is this text and a mostly barebones HTML document.
+	if !user
+		#login-block.col-md-6
+			h1 Octostar
+			h2 An open-source Github Star Organizer
+			p
+				| Feel free to look around. Sign in using your github account. Once logged in, you can tag, sort, and otherwise organize your github starred repos.
+			form(method='POST')
+				legend Sign In
+				input(type='hidden', name='_csrf', value=token)
+				.col-sm-8.col-sm-offset-2
+					if secrets.githubAuth
+						a.btn.btn-block.btn-github.btn-social(href='/auth/github')
+							i.fa.fa-github
+							| Sign in with GitHub
+	else
+		#sidebar.col-md-3 
+			ul
+				li test
+				li test
+		#main-content.col-md-9
+			.bs-callout.col-md-4.repo(v-repeat="repos" class="repo-{{$index}}")
+				h4.title {{title}}
+				span.language {{language}} 
+				span.owner {{owner}}
+				br
+				em.tags(v-repeat="tag: tags"){{tag}}
+					span(v-show='$index < tags.length ') , 
+				p.description {{description | brief}}
+				em.date-created {{dateCreated}} 
+				em.date-starred {{dateStarred}}
+			.bs-callout.col-md-4
+				h4 test content
+				p test data
