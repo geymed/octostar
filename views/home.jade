@@ -16,16 +16,17 @@ block content
 							i.fa.fa-github
 							| Sign in with GitHub
 	else
-		#sidebar.col-md-3 
-			label#acive-sync-label(for='active-sync') Active-Sync
-			input#active-sync.toggle(type='checkbox',checked)
-			br
-			button#sync-account.btn.btn.btn-primary.btn-sm
+		#sidebar.col-md-3
+			input#active-sync-dummy.toggle(type='checkbox',checked)
+			input#active-sync(type='checkbox',v-model='async')
+			label#active-sync-label(for='active-sync',v-class='disabled:!async') Active-Sync
+			hr.activehr
+			em#last-synced Last synced 5 mins ago
+			button#sync-account.btn.btn.btn-primary.btn-sm(v-class='disabled:!async')
 				| &nbsp;
 				i.fa.fa-refresh
-			ul
-				li test
-				li test
+			hr.activehr
+
 		#main-content.col-md-9
 			.bs-callout.col-md-4.repo(v-repeat="repos" class="repo-{{$index}}")
 				h4.title {{title}}

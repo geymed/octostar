@@ -1,20 +1,35 @@
 var controller = {
-
-
+	sidebar:{
+		asyncToggle: function(){
+			$('.toggle').bootstrapSwitch();
+			$('.bootstrap-switch-id-active-sync-dummy').on('switchChange.bootstrapSwitch', function(event, state) {
+				console.log(state); 
+				if (state && !($('#active-sync').is(':checked'))){
+					toggleSync = true;
+					$('#active-sync').click().promise().done(function(){
+						toggleSync = false;
+					});
+				}
+				else if (!state && $('#active-sync').is(':checked')){
+					$('#active-sync').click().promise().done(function(){
+						toggleSync = false;
+					});
+				}
+			});
+		}
+	}
 }
 var services = {
 
 
 }
-Vue.filter('brief', function (value) {
-    return value.substring(0, 75) + "...";
-})
-
-$(document).ready(function() {
-	$('.toggle').bootstrapSwitch();
-	var model = new Vue({
+var vue;
+var model = {
+	init:function(){
+		vue = new Vue({
 		el: '#vapp',
 		data: {
+			async: true,
 			repos: [
 			{
 				title: 'Dummy Repo',
@@ -29,6 +44,13 @@ $(document).ready(function() {
 			]
 		}
 	});
+	}
+}
+Vue.filter('brief', function (value) {
+	return value.substring(0, 75) + "...";
+})
 
-
+$(document).ready(function() {
+	controller.sidebar.asyncToggle();
+	model.init();
 });
