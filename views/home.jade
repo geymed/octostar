@@ -17,6 +17,12 @@ block content
 							| Sign in with GitHub
 	else
 		#sidebar.col-md-3 
+			label#acive-sync-label(for='active-sync') Active-Sync
+			input#active-sync.toggle(type='checkbox',checked)
+			br
+			button#sync-account.btn.btn.btn-primary.btn-sm
+				| &nbsp;
+				i.fa.fa-refresh
 			ul
 				li test
 				li test

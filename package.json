@@ -46,7 +46,8 @@
     "uglify-js": "~2.4.12",
     "validator": "~3.4.0",
     "curly": "^0.6.2",
-    "curlrequest": "^0.4.1"
+    "curlrequest": "^0.4.1",
+    "require-private": "^1.0.2"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

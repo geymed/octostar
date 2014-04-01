@@ -11,6 +11,7 @@ Vue.filter('brief', function (value) {
 })
 
 $(document).ready(function() {
+	$('.toggle').bootstrapSwitch();
 	var model = new Vue({
 		el: '#vapp',
 		data: {
