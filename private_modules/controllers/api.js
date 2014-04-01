@@ -1,5 +1,6 @@
 // Global Modules
 var _ = require('underscore');
+var curl = require('curlrequest')
 
 // Local Modules
 var requirePrivate = require('require-private');

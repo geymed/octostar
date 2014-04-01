@@ -88,7 +88,7 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
 
 exports.isAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) return next();
-  res.redirect('/');
+  res.json(false);
 };
 
 /**

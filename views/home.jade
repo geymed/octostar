@@ -22,22 +22,21 @@ block content
 			label#active-sync-label(for='active-sync',v-class='disabled:!async') Active-Sync
 			hr.activehr
 			em#last-synced Last synced 5 mins ago
-			button#sync-account.btn.btn.btn-primary.btn-sm(v-class='disabled:!async')
+			button#sync-account.btn.btn.btn-primary.btn-sm(v-class='disabled:!async',v-on='click:getStars')
 				| &nbsp;
 				i.fa.fa-refresh
 			hr.activehr
 
 		#main-content.col-md-9
 			.bs-callout.col-md-4.repo(v-repeat="repos" class="repo-{{$index}}")
-				h4.title {{title}}
+				h4.title {{name}}
 				span.language {{language}} 
-				span.owner {{owner}}
+				span.owner {{owner.login}}
 				br
 				em.tags(v-repeat="tag: tags"){{tag}}
 					span(v-show='$index < tags.length ') , 
 				p.description {{description | brief}}
-				em.date-created {{dateCreated}} 
-				em.date-starred {{dateStarred}}
+				em.date-created {{created_at}} 
 			.bs-callout.col-md-4
 				h4 test content
 				p test data
