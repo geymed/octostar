@@ -4,6 +4,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 var requirePrivate = require('require-private');
 
 var User = requirePrivate('models/User');
+var Repo = requirePrivate('models/Repo');
 var secrets = requirePrivate('config/secrets');
 
 passport.serializeUser(function(user, done) {
@@ -73,7 +74,12 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
           user.profile.location = profile._json.location;
           user.profile.website = profile._json.blog;
           user.save(function(err) {
-            done(err, user);
+            var repo = new Repo();
+            repo.id = profile.id;
+            repo.repos = [];
+            repo.save(function(err) {
+              done(err, user);
+            });
           });
         }
       });

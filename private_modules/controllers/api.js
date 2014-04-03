@@ -7,6 +7,7 @@ var async = require('async');
 var requirePrivate = require('require-private');
 var secrets = requirePrivate('config/secrets');
 var User = requirePrivate('models/User');
+var Repo = requirePrivate('models/Repo');
 
 
 // Account-based API calls
@@ -14,7 +15,22 @@ var User = requirePrivate('models/User');
 exports.account = {
 
 	starSync: function(req,res){
-		res.json('hello');
+		// ObjectId("533dd0446a4de07336824ed4")
+		Repo.find({ id: req.user.github }, function(err, repo) {
+			if (err) { 
+				res.json(err);
+			}
+			else{
+				repo = repo[0];
+				console.log(repo);
+				repo.repos = [] // get repos here
+				console.log(repo);
+				repo.save(function(err) {
+					if (err) return next(err);
+					res.json(repo);
+				});
+			}
+		});
 	},
 	getStars: function(req,res){
 		var getKeys = function(obj){
@@ -35,7 +51,7 @@ exports.account = {
 					url:starPage + pageIndex,
 					headers: 'Accept: application/json'
 				}
-						curl.request(starPage + pageIndex, callback)
+				curl.request(starPage + pageIndex, callback)
 			 }
 		}
 
