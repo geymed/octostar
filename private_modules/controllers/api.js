@@ -16,62 +16,67 @@ exports.account = {
 
 	starSync: function(req,res){
 		// ObjectId("533dd0446a4de07336824ed4")
-		Repo.find({ id: req.user.github }, function(err, repo) {
+		var userid = req.user.github;
+		var token = req.user.tokens[0].accessToken;
+
+		var starPage = 'https://api.github.com/user/'+userid+'/starred?access_token='+token+'&per_page=100&page=';
+		Repo.find({ id: req.user.github }, function(err, data) {
 			if (err) { 
 				res.json(err);
 			}
 			else{
-				repo = repo[0];
-				console.log(repo);
-				repo.repos = [] // get repos here
-				console.log(repo);
-				repo.save(function(err) {
-					if (err) return next(err);
-					res.json(repo);
+				data = data[0];
+				console.log(' ');
+
+				/*get stars*/
+				var page = 1;
+				var funcArray = []
+				function createRequestFunction(pageIndex) {
+					 return function(callback) {
+						var options = {
+							url:starPage + pageIndex,
+							headers: 'Accept: application/json'
+						}
+						curl.request(starPage + pageIndex, callback)
+					 }
+				}
+
+				for (var i = 1; i <= 10; i++) {
+					 funcArray.push(createRequestFunction(i))
+				}
+
+				async.parallel(funcArray, function(err, results) {
+					var allStars = [];
+					for (var i = results.length-1; i >= 0; i--){
+						results[i][0] = results[i][0].replace(/\n/g, '');
+						results[i][0] = JSON.parse(results[i][0]);
+						if(results[i][0].length === 0){
+							results.splice(i,1);
+						}
+						else{
+							var allStars = results[i][0].concat(allStars);
+						}
+					}
+					data.repos.remote = allStars;
+					console.log(' ');
+					data.save(function(err) {
+						if (err) return res.json({'error':err});
+						res.json('success');
+					});
 				});
 			}
 		});
 	},
 	getStars: function(req,res){
-		var getKeys = function(obj){
-			var keys = [];
-			for(var key in obj){
-				keys.push(key);
+		Repo.find({ id: req.user.github }, function(err, data) {
+			if (err) { 
+				res.json(err);
 			}
-			return keys;
-		}
-		var userid = req.user.github;
-		var token = req.user.tokens[0].accessToken;
-		var page = 1;
-		var starPage = 'https://api.github.com/user/'+userid+'/starred?access_token='+token+'&per_page=100&page=';
-		var funcArray = []
-		function createRequestFunction(pageIndex) {
-			 return function(callback) {
-				var options = {
-					url:starPage + pageIndex,
-					headers: 'Accept: application/json'
-				}
-				curl.request(starPage + pageIndex, callback)
-			 }
-		}
-
-		for (var i = 1; i <= 10; i++) {
-			 funcArray.push(createRequestFunction(i))
-		}
-
-		async.parallel(funcArray, function(err, results) {
-			var allStars = [];
-			for (var i = results.length-1; i >= 0; i--){
-				results[i][0] = results[i][0].replace(/\n/g, '');
-				results[i][0] = JSON.parse(results[i][0]);
-				if(results[i][0].length === 0){
-					results.splice(i,1);
-				}
-				else{
-					var allStars = results[i][0].concat(allStars);
-				}
+			else{
+				data = data[0];
+				console.log(' ');
+				res.json(data.repos.remote);
 			}
-			 res.json(allStars);
 		});
 	}
 }

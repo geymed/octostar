@@ -76,7 +76,9 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
           user.save(function(err) {
             var repo = new Repo();
             repo.id = profile.id;
-            repo.repos = [];
+            repo.repos = {};
+            repo.repos.local = [];
+            repo.repos.remote = [];
             repo.save(function(err) {
               done(err, user);
             });
