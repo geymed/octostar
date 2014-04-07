@@ -40,7 +40,8 @@ exports.account = {
 						curl.request(starPage + pageIndex, callback)
 					 }
 				}
-
+				// TODO: curl the profile page and return number of repos
+				// pagenum = repos / 100;
 				for (var i = 1; i <= 10; i++) {
 					 funcArray.push(createRequestFunction(i))
 				}
@@ -80,26 +81,3 @@ exports.account = {
 		});
 	}
 }
-
-/*
-(11:09:47 AM) Scott Hillman: https://github.com/caolan/async
-(11:14:03 AM) Scott Hillman: starPage = "jkfldsjklfds.com?page=";
-
-
-funcArray = []
-
-createRequestFunction(pageIndex) {
-	return function(callback) {
-		request.get(starPage + pageIndex)
-	}
-}
-
-for (var i = 0; i <= 10; i++) {
-	funcArray.push(createRequestFuncion(i))
-}
-
-async.parallel(funcArray, function(err, results) {
-	
-});
-
-*/
