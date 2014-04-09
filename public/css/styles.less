@@ -111,13 +111,13 @@ body {
   border-left: 5px solid #eee;
   height: 200px;
 
- background: -moz-linear-gradient(left, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
-background: linear-gradient(to right, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+  background: -moz-linear-gradient(left, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 
 }
 .bs-callout h4 {
@@ -149,27 +149,6 @@ label.disabled{
   color:@gray;
 }
 
-.bs-callout{
-
-}
-.bs-callout{
-
-}
-
-/*
-Unknown languages
-CSS
-CoffeeScript
-JavaScript
-PHP
-Python
-Ruby
-Shell
-
-Other
-
-*/
-
 
 .bootstrap-switch-id-active-sync-dummy{
   float:left;
@@ -198,4 +177,49 @@ Other
   clear:right;
   float:right;  
   margin-bottom:10px;
+}
+.bs-callout.repo{
+  position:relative;
+  h4{
+
+  }
+  .language{
+    position:absolute;
+    font-size:10px;
+    background:#aaa;
+    color:white;
+    top: 15px;
+    right: 15px;
+    padding:5px;
+    border-radius:3px;
+
+  }
+  .owner{
+    font-size:10px;
+    position: relative;
+    top: -5px;
+  }
+  .date-created{
+    font-size:10px;
+    float:right;
+    margin-right:-15px;
+  }
+  .description{
+
+  }
+  .tags{
+    position:absolute;
+    bottom:0px;
+    left: 12px;
+    right: 25px;
+    span{
+      display:inline-block;
+      padding:5px 8px;
+      margin:3px 3px;
+      border-radius:3px;
+      background-color:#aaa;
+      color:white;
+      font-size:10px;
+    }
+  }
 }

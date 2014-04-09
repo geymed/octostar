@@ -43,9 +43,11 @@ var model = {
 				]
 			},
 			methods:{
-				getStars:model.getStars
+				getStars:model.getStars,
+				initSync:model.initSync
 			}
 		});
+		model.getStars();
 	},
 	getStars:function(){
 		$.get('/api/account/stars',function(res){
@@ -54,11 +56,17 @@ var model = {
 		})
 	},
 	initSync:function(){
-
+		$.get('/api/account/sync',function(res){
+			console.log(res);
+			model.getStars();
+		})
 	}
 }
 Vue.filter('brief', function (value) {
-	return value.substring(0, 75) + "...";
+	if (value.length > 100){
+		return value.substring(0, 100) + "...";
+	}
+	return value;
 })
 
 $(document).ready(function() {

@@ -104,7 +104,7 @@ app.post('/account/delete', passportConf.isAuthenticated, accountCtrl.postDelete
 
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect('/');
 });
 
 // Routes requiring login
