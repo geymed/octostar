@@ -12,5 +12,7 @@
 //= require lib/jquery-2.1.0.min
 //= require lib/bootstrap.min
 //= require lib/bootstrap-switch.min
+//= require lib/lodash.min
+//= require lib/isotope.pkgd.min
 //= require lib/vue.min
 //= require main
