@@ -26,7 +26,7 @@ exports.account = {
 			}
 			else{
 				data = data[0];
-				console.log('syncstars');
+				console.log(' ');
 
 				/*get stars*/
 				var page = 1;
@@ -59,7 +59,6 @@ exports.account = {
 						}
 					}
 					data.repos.remote = allStars;
-					console.log('syncstars-done');
 					data.save(function(err) {
 						if (err) return res.json({'error':err});
 						res.json('success');
@@ -76,7 +75,7 @@ exports.account = {
 			else{
 				data = data[0];
 				console.log(' ');
-				res.json(data.repos.remote);
+				res.json(data.repos);
 			}
 		});
 	}

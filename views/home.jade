@@ -27,8 +27,8 @@ block content
 				i.fa.fa-refresh
 			hr.activehr
 
-		#main-content.col-md-9
-			.bs-callout.col-md-4.repo(v-repeat="repos" class="{{language | lowercase}} repo-{{$index}}")
+		#main-content.col-md-9.clearfix
+			.bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | lowercase || "unknown"}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class="{{language | lowercase}} repo-{{$index}}")
 				h4.title {{name}}
 				span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
 				span.owner {{owner.login}}
