@@ -1,6 +1,7 @@
 var controller = {
 	init:function(){
 		controller.sidebar.asyncToggle();
+		controller.sidebar.filtersortdropdown();
 		model.init();
 		service.isotope.init();
 	},
@@ -20,6 +21,9 @@ var controller = {
 					});
 				}
 			});
+		},
+		filtersortdropdown: function(){
+			 $('.selectpicker').selectpicker();
 		}
 	}
 }
