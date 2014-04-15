@@ -14,6 +14,7 @@
 //= require lib/bootstrap-switch.min
 //= require lib/bootstrap-select
 //= require lib/lodash.min
+//= require lib/moment.min
 //= require lib/isotope.pkgd.min
 //= require lib/vue.min
 //= require main

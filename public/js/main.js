@@ -61,6 +61,7 @@ var service = {
 				el: '#vapp',
 				data: {
 					async: true,
+					languages:[],
 					repos: {
 						remote:[],
 						local:[]
@@ -89,6 +90,9 @@ var service = {
 						return value.toLowerCase();
 					}
 					return 'unknown'
+				});
+				Vue.filter('timeago', function (value) {
+					return moment(value).fromNow();
 				});
 				Vue.filter('list', function (value) {
 					if (value instanceof Array){
@@ -146,8 +150,18 @@ var service = {
 			}
 			$('#main-content').isotope({ filter: arr })
 		}
-	}
+	},
+	selectpicker:{
+		init:function(){
 
+		},
+		refresh:function(tag){
+			$('.selectpicker.'+tag).selectpicker('render');
+		}
+	}
+	swap: function(ref, replacement, input) {
+		return (ref === input) ? replacement : input;
+	}
 }
 var vue;
 var model = {
@@ -159,6 +173,11 @@ var model = {
 		$.get('/api/account/stars',function(res){
 			console.log(res);
 			vue.repos = res;
+			var langs = _.pluck(res.remote, 'language');
+			langs = _.uniq(langs);
+			langs = _.map(langs, _.partial(service.swap, null, 'Unknown'));
+			vue.languages = langs;
+			service.selectpicker.refresh('filter');
 		})
 	},
 	initSync:function(){
