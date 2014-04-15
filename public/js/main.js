@@ -23,7 +23,34 @@ var controller = {
 			});
 		},
 		filtersortdropdown: function(){
-			 $('.selectpicker').selectpicker();
+			 $('.selectpicker').selectpicker().promise().done(function(){
+			 	function filterReit(){
+			 		if ($('a.filter').length === 0){
+			 			_.delay(filterReit, 500);
+			 		}
+			 		else{
+			 			$('a.filter').on('click',function(){
+					 		_.delay(function(){
+					 			service.isotope.filterby($('.selectpicker.filter').val());
+					 		},100);
+					 	})
+			 		}
+			 	}
+			 	filterReit();
+			 	function sortReit(){
+			 		if ($('a.sort').length === 0){
+			 			_.delay(sortReit, 500);
+			 		}
+			 		else{
+			 			$('a.sort').on('click',function(){
+					 		_.delay(function(){
+					 			service.isotope.sortby($('.selectpicker.sort').val());
+					 		},100);
+					 	})
+			 		}
+			 	}
+			 	sortReit();
+			 });
 		}
 	}
 }
@@ -56,6 +83,12 @@ var service = {
 						return value.substring(0, 100) + "...";
 					}
 					return value;
+				});
+				Vue.filter('langfilter', function (value) {
+					if (value){
+						return value.toLowerCase();
+					}
+					return 'unknown'
 				});
 				Vue.filter('list', function (value) {
 					if (value instanceof Array){
@@ -103,12 +136,15 @@ var service = {
 			console.log(str);
 			$('#main-content').isotope({ sortBy: str })
 		},
-		filterby:function(str){
-			console.log(str);
-			if (str !== '*'){
-				str = "."+str;
+		filterby:function(arr){
+			console.log(arr);
+			if (arr === null){
+				arr = '*';
 			}
-			$('#main-content').isotope({ filter: str })
+			else{
+				arr = arr.join();
+			}
+			$('#main-content').isotope({ filter: arr })
 		}
 	}
 
