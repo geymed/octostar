@@ -39,7 +39,7 @@ block content
                 option.sort(data-icon="fa-code",value='language') Language
                 option.sort(data-icon="fa-calendar",value='created') Date Created
             hr.activehr
-            h3 Filter By:
+            h3 Filters
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("*")') None
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("javascript")') Javascript
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("css")') css
@@ -47,12 +47,15 @@ block content
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("c")') c
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("unknown")') unknown
             
-            select.selectpicker.filter(multiple='',data-selected-text-format="values")
+            select.selectpicker.filter(multiple='',data-selected-text-format="values",title="Language")
                 option.filter(v-repeat='lang: languages',value=".{{lang | langfilter}}") {{lang}}
 
         #main-content.col-md-9.clearfix
             .bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class='{{language | langfilter}} repo-{{$index}}')
-                h4.title {{name}}
+                
+                h4.title {{name}} 
+                    a.small(href="{{clone_url}}",target="_blank")
+                        i.small.fa.fa-external-link
                 span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
                 span.owner {{owner.login}}
                 span.date-created created {{created_at | timeago}} 

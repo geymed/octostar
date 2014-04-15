@@ -1,7 +1,7 @@
 var controller = {
 	init:function(){
 		controller.sidebar.asyncToggle();
-		controller.sidebar.filtersortdropdown();
+		controller.sidebar.sortdropdown();
 		model.init();
 		service.isotope.init();
 	},
@@ -22,35 +22,50 @@ var controller = {
 				}
 			});
 		},
-		filtersortdropdown: function(){
-			 $('.selectpicker').selectpicker().promise().done(function(){
-			 	function filterReit(){
-			 		if ($('a.filter').length === 0){
-			 			_.delay(filterReit, 500);
-			 		}
-			 		else{
-			 			$('a.filter').on('click',function(){
-					 		_.delay(function(){
-					 			service.isotope.filterby($('.selectpicker.filter').val());
-					 		},100);
-					 	})
-			 		}
-			 	}
-			 	filterReit();
-			 	function sortReit(){
-			 		if ($('a.sort').length === 0){
-			 			_.delay(sortReit, 500);
-			 		}
-			 		else{
-			 			$('a.sort').on('click',function(){
-					 		_.delay(function(){
-					 			service.isotope.sortby($('.selectpicker.sort').val());
-					 		},100);
-					 	})
-			 		}
-			 	}
-			 	sortReit();
-			 });
+		sortdropdown: function(){
+			$('.selectpicker').selectpicker().promise().done(function(){
+				function filterReit(){
+					if ($('a.filter').length === 0){
+						_.delay(filterReit, 500);
+					}
+					else{
+						$('a.filter').on('click',function(){
+							_.delay(function(){
+								service.isotope.filterby($('.selectpicker.filter').val());
+							},100);
+						})
+					}
+				}
+				filterReit();
+				function sortReit(){
+					if ($('a.sort').length === 0){
+						_.delay(sortReit, 500);
+					}
+					else{
+						$('a.sort').on('click',function(){
+							_.delay(function(){
+								service.isotope.sortby($('.selectpicker.sort').val());
+							},100);
+						})
+					}
+				}
+				sortReit();
+			});
+		},
+		filterdropdown:function(){
+			function filterReit(){
+				if ($('a.filter').length === 0){
+					_.delay(filterReit, 500);
+				}
+				else{
+					$('a.filter').on('click',function(){
+						_.delay(function(){
+							service.isotope.filterby($('.selectpicker.filter').val());
+						},100);
+					})
+				}
+			}
+			filterReit();
 		}
 	}
 }
@@ -112,7 +127,7 @@ var service = {
 							service.isotope.reload();
 						}
 					}
-				})
+				});
 			}
 		}
 	},
@@ -122,14 +137,14 @@ var service = {
 				itemSelector: '.bs-callout',
 				layoutMode: 'masonry',
 				masonry: {
-				  gutter:0
+					gutter:0
 				},
 				getSortData: {
-				    name: '[data-name]',
-				    language: '[data-language]',
-				    owner: '[data-owner]',
-				    created: '[data-created]',
-				    tag: '[data-tag]'
+					name: '[data-name]',
+					language: '[data-language]',
+					owner: '[data-owner]',
+					created: '[data-created]',
+					tag: '[data-tag]'
 				}
 			})
 		},
@@ -156,7 +171,8 @@ var service = {
 
 		},
 		refresh:function(tag){
-			$('.selectpicker.'+tag).selectpicker('render');
+			$('.selectpicker.'+tag).selectpicker('refresh');
+			controller.sidebar.sortdropdown();
 		}
 	},
 	swap: function(ref, replacement, input) {
@@ -177,7 +193,9 @@ var model = {
 			langs = _.uniq(langs);
 			langs = _.map(langs, _.partial(service.swap, null, 'Unknown'));
 			vue.languages = langs;
-			service.selectpicker.refresh('filter');
+			_.delay(function(){
+				service.selectpicker.refresh('filter');
+			},500);
 		})
 	},
 	initSync:function(){

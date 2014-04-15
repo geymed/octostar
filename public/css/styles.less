@@ -37,6 +37,7 @@ body {
   bottom: 0px;
   left: 0px;
   width: 100%;
+  z-index:10;
 }
 
 // Navbar
@@ -202,6 +203,7 @@ label.disabled{
     padding:5px;
     border-radius:3px;
     font-weight:bold;
+    cursor:pointer;
   }
   .owner{
     font-size:10px;
@@ -223,12 +225,39 @@ label.disabled{
     right: 25px;
     span{
       display:inline-block;
-      padding:5px 8px;
-      margin:3px 3px;
-      border-radius:3px;
+      padding:3px 8px;
+      padding-left:15px;
       background-color:#aaa;
       color:white;
       font-size:10px;
+      position:relative;
+      border:solid 1px white;
+      border-top:none;
+      cursor:pointer;
+      &:after, &:before{
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        z-index:5;
+      }
+
+      &:after {
+        border-color: rgba(255,255,255, 0);
+        border-left-color: #aaa;
+        border-width: 10px;
+        margin-top: -10px;
+      }
+      &:before {
+        border-color: rgba(255,255,255, 0);
+        border-left-color: #fff;
+        border-width: 12px;
+        margin-top: -12px;
+      }
     }
   }
 }
