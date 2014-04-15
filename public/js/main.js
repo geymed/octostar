@@ -158,7 +158,7 @@ var service = {
 		refresh:function(tag){
 			$('.selectpicker.'+tag).selectpicker('render');
 		}
-	}
+	},
 	swap: function(ref, replacement, input) {
 		return (ref === input) ? replacement : input;
 	}
