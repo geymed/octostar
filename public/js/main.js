@@ -37,7 +37,9 @@ var service = {
 				},
 				methods:{
 					getStars:model.getStars,
-					initSync:model.initSync
+					initSync:model.initSync,
+					sortby:service.isotope.sortby,
+					filterby:service.isotope.filterby
 				}
 			});
 			service.vue.filters.init();
@@ -82,16 +84,27 @@ var service = {
 				  gutter:0
 				},
 				getSortData: {
-			    name: '[data-name]',
-			    language: '[data-language]',
-			    owner: '[data-owner]',
-			    created: '[data-created]',
-			    tag: '[data-tag]'
-			  },
+				    name: '[data-name]',
+				    language: '[data-language]',
+				    owner: '[data-owner]',
+				    created: '[data-created]',
+				    tag: '[data-tag]'
+				}
 			})
 		},
 		reload:function(){
 			$('#main-content').isotope('reloadItems').isotope();
+		},
+		sortby:function(str){
+			console.log(str);
+			$('#main-content').isotope({ sortBy: str })
+		},
+		filterby:function(str){
+			console.log(str);
+			if (str !== '*'){
+				str = "."+str;
+			}
+			$('#main-content').isotope({ filter: str })
 		}
 	}
 

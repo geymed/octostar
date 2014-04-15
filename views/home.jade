@@ -26,6 +26,20 @@ block content
 				| &nbsp;
 				i.fa.fa-refresh
 			hr.activehr
+			h3 Sort By:
+			button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("original-order")') Date Starred
+			button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("name")') Name
+			button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("owner")') owner
+			button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("language")') language
+			button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("created")') created
+			hr.activehr
+			h3 Filter By:
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("*")') None
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("javascript")') Javascript
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("css")') css
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("coffeescript")') coffeescript
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("c")') c
+			button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("unknown")') unknown
 
 		#main-content.col-md-9.clearfix
 			.bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | lowercase || "unknown"}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class="{{language | lowercase}} repo-{{$index}}")
