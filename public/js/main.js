@@ -75,8 +75,8 @@ var service = {
 			vue = new Vue({
 				el: '#vapp',
 				data: {
-					async: true,
 					languages:[],
+					lastSynced: 'never',
 					repos: {
 						remote:[],
 						local:[]
@@ -86,7 +86,8 @@ var service = {
 					getStars:model.getStars,
 					initSync:model.initSync,
 					sortby:service.isotope.sortby,
-					filterby:service.isotope.filterby
+					filterby:service.isotope.filterby,
+					forceSync:model.forceSync
 				}
 			});
 			service.vue.filters.init();
@@ -100,6 +101,12 @@ var service = {
 					}
 					return value;
 				});
+				Vue.filter('titlebrief', function (value) {
+					if (value.length > 11){
+						return value.substring(0, 11) + "...";
+					}
+					return value;
+				});
 				Vue.filter('langfilter', function (value) {
 					if (value){
 						return value.toLowerCase();
@@ -108,6 +115,12 @@ var service = {
 				});
 				Vue.filter('timeago', function (value) {
 					return moment(value).fromNow();
+				});
+				Vue.filter('bob', function (value) {
+					// console.log(value);
+					// var dateString = moment.unix(value).format("YYYY-MM-DDTHH:mm:ss") + "Z";
+					// console.log(dateString);
+					return 'bob';
 				});
 				Vue.filter('list', function (value) {
 					if (value instanceof Array){
@@ -152,11 +165,9 @@ var service = {
 			$('#main-content').isotope('reloadItems').isotope();
 		},
 		sortby:function(str){
-			console.log(str);
 			$('#main-content').isotope({ sortBy: str })
 		},
 		filterby:function(arr){
-			console.log(arr);
 			if (arr === null){
 				arr = '*';
 			}
@@ -183,13 +194,15 @@ var vue;
 var model = {
 	init:function(){
 		service.vue.init();
-		model.getStars();
+		model.initSync();
 	},
 	getStars:function(){
 		$.get('/api/account/stars',function(res){
-			console.log(res);
-			vue.repos = res;
-			var langs = _.pluck(res.remote, 'language');
+			vue.repos = res.repos;
+			var s = new Date(res.lastSynced).toISOString();
+			dateString = moment(s).fromNow();
+			vue.lastSynced = dateString;
+			var langs = _.pluck(res.repos.remote, 'language');
 			langs = _.uniq(langs);
 			langs = _.map(langs, _.partial(service.swap, null, 'Unknown'));
 			vue.languages = langs;
@@ -200,7 +213,11 @@ var model = {
 	},
 	initSync:function(){
 		$.get('/api/account/sync',function(res){
-			console.log(res);
+			model.getStars();
+		})
+	},
+	forceSync:function(){
+		$.get('/api/account/sync?force=true',function(res){
 			model.getStars();
 		})
 	}

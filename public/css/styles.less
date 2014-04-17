@@ -191,7 +191,7 @@ label.disabled{
   width:100%;
   position:relative;
   h4{
-
+    cursor:default;
   }
   .language{
     position:absolute;
@@ -244,6 +244,7 @@ label.disabled{
         position: absolute;
         pointer-events: none;
         z-index:5;
+        cursor:pointer;
       }
 
       &:after {
@@ -257,6 +258,28 @@ label.disabled{
         border-left-color: #fff;
         border-width: 12px;
         margin-top: -12px;
+      }
+      &.add{
+        padding-right: 0pc;
+        background-color: #0a0;
+        &:after {
+          border-color: rgba(255,255,255, 0);
+          border-left-color: #0a0;
+          border-width: 10px;
+          margin-top: -10px;
+          cursor:pointer;
+        }
+      }
+      &.edit{
+        padding-right: 0pc;
+        background-color: #00a;
+        &:after {
+          border-color: rgba(255,255,255, 0);
+          border-left-color: #00a;
+          border-width: 10px;
+          margin-top: -10px;
+          cursor:pointer;
+        }
       }
     }
   }

@@ -17,12 +17,8 @@ block content
                             | Sign in with GitHub
     else
         #sidebar.col-md-3
-            input#active-sync-dummy.toggle(type='checkbox',checked)
-            input#active-sync(type='checkbox',v-model='async')
-            label#active-sync-label(for='active-sync',v-class='disabled:!async') Active-Sync
-            hr.activehr
-            em#last-synced Last synced 5 mins ago
-            button#sync-account.btn.btn.btn-primary.btn-sm(v-class='disabled:!async',v-on='click:initSync')
+            em#last-synced Last synced {{lastSynced}}
+            button#sync-account.btn.btn.btn-primary.btn-sm(v-on='click:forceSync')
                 | &nbsp;
                 i.fa.fa-refresh
             hr.activehr
@@ -53,7 +49,7 @@ block content
         #main-content.col-md-9.clearfix
             .bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class='{{language | langfilter}} repo-{{$index}}')
                 
-                h4.title {{name}} 
+                h4.title(title="{{name}}") {{name | titlebrief}} 
                     a.small(href="{{clone_url}}",target="_blank")
                         i.small.fa.fa-external-link
                 span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
@@ -62,9 +58,7 @@ block content
                 p.description {{description | brief}}
                 .tags
                     span.tag(v-repeat="tag: tags"){{tag}}
-                    span.tag Test
-                    span.tag another test
-                    span.tag effing super long
-                    span.tag a
-                    span.tag another test
-                    span.tag another test
+                    span.tag Lorem Ipsum
+                    span.tag.add(v-on="click:addTag(name, created_at)")
+                        i.fa.fa-pencil
+                    
