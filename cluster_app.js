@@ -11,7 +11,7 @@ var cluster = require('cluster');
 
 // Setup the cluster to use app.js
 cluster.setupMaster({
-  exec: 'app.js'
+  exec: 'server.js'
 });
 
 // Listen for dying workers

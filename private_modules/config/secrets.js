@@ -1,5 +1,5 @@
 module.exports = {
-  db: process.env.MONGODB|| 'mongodb://localhost:27017/octostar',
+  db: process.env.OPENSHIFT_MONGODB_DB_URL + 'octostar' || 'mongodb://127.0.0.1:27017/octostar',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
