@@ -59,6 +59,16 @@ block content
                 .tags
                     span.tag(v-repeat="tag: tags"){{tag}}
                     span.tag Lorem Ipsum
-                    span.tag.add(v-on="click:addTag(name, created_at)")
+                    span.tag.add(v-on="click:addTag(name, created_at)",data-toggle="modal",data-target="#myModal")
                         i.fa.fa-pencil
-                    
+        #myModal.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        button.close(type="button",data-dismiss="modal",aria-hidden="true") &times;
+                        h4#myModalLabel.modal-title Modal title
+                      .modal-body
+                        | Lorem Ipsum
+                      .modal-footer
+                        button.btn.btn-default(type="button",data-dismiss="modal") Close
+                        button.btn.btn-primary(type="button") Save changes

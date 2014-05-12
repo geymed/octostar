@@ -14,7 +14,6 @@ var requirePrivate = require('require-private');
 
 var homeCtrl = requirePrivate('controllers/home');
 var apiCtrl = requirePrivate('controllers/api');
-var contactCtrl = requirePrivate('controllers/contact');
 var accountCtrl = requirePrivate('controllers/account');
 
 // Config Dependencies
@@ -39,7 +38,7 @@ var hour = 3600000;
 var day = (hour * 24);
 var month = (day * 30);
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('ip_address', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
