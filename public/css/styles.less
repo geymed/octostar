@@ -7,6 +7,8 @@
 @import "themes/flatly";
 
 @import "callout-colors";
+@import "font-adam";
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic);
 
 // Scaffolding
 // -------------------------
@@ -40,6 +42,9 @@ body {
   z-index:10;
 }
 
+h1, h2, h3, h4, h5, h6, button {
+  font-family:'adam','Helvetica',Arial,sans-serif;
+}
 // Navbar
 // -------------------------
 
@@ -59,6 +64,7 @@ body {
   padding-left: 50px;
   margin-left: 15px;
   height: 45px;
+  font-family:'adam','Helvetica',Arial,sans-serif;
   &:hover{
 
     background-image: url('../img/octostar-hover.png');
@@ -190,8 +196,9 @@ label.disabled{
 .bs-callout.repo{
   width:100%;
   position:relative;
-  h4{
+  h5{
     cursor:default;
+    margin-top: 3px;
   }
   .language{
     position:absolute;
@@ -288,4 +295,7 @@ label.disabled{
   .bs-callout.repo{
     width:30%;
   }
+}
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+  width:100%;
 }

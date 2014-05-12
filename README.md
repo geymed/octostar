@@ -29,3 +29,9 @@ I personally use nodemon for development, and use supervisor for the deployment.
 
 ### Installation
 TODO
+
+### Licensing and Attribution
+
+MIT
+
+[Adam Font](https://www.behance.net/gallery/ADAM-Free-Typeface/13756975)

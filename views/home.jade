@@ -17,12 +17,13 @@ block content
                             | Sign in with GitHub
     else
         #sidebar.col-md-3
-            em#last-synced Last synced {{lastSynced}}
-            button#sync-account.btn.btn.btn-primary.btn-sm(v-on='click:forceSync')
+            em#last-synced(v-show="lastSynced == 'never'") Retrieving Stars...
+            em#last-synced(v-show="lastSynced !== 'never'") Last synced {{lastSynced}}
+            button#sync-account.btn.btn.btn-primary.btn-sm(v-on='click:forceSync',v-show="lastSynced !== 'never'")
                 | &nbsp;
                 i.fa.fa-refresh
             hr.activehr
-            h3 Sort By:
+            h4 Sort By:
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("original-order")') Date Starred
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("name")') Name
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:sortby("owner")') owner
@@ -35,7 +36,7 @@ block content
                 option.sort(data-icon="fa-code",value='language') Language
                 option.sort(data-icon="fa-calendar",value='created') Date Created
             hr.activehr
-            h3 Filters
+            h4 Filters
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("*")') None
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("javascript")') Javascript
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("css")') css
@@ -49,7 +50,7 @@ block content
         #main-content.col-md-9.clearfix
             .bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class='{{language | langfilter}} repo-{{$index}}')
                 
-                h4.title(title="{{name}}") {{name | titlebrief}} 
+                h5.title(title="{{name}}") {{name | titlebrief}} 
                     a.small(href="{{clone_url}}",target="_blank")
                         i.small.fa.fa-external-link
                 span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
