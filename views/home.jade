@@ -51,7 +51,9 @@ block content
             .bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class='{{language | langfilter}} repo-{{$index}}')
                 
                 h5.title(title="{{name}}") {{name | titlebrief}} 
+                    br
                     a.small(href="{{clone_url}}",target="_blank")
+                        | Github  
                         i.small.fa.fa-external-link
                 span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
                 span.owner {{owner.login}}
