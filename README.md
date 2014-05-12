@@ -1,4 +1,4 @@
-# Octostar.io
+![Octostar](/octostar-title.png?raw=true "Octostar")
 
 A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you can manage and tag your Github stars using this tool. Built with Node, Mongo, Bootstrap, Vue, and a smattering of other things.
 
