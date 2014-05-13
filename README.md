@@ -2,7 +2,7 @@
 
 A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you can manage and tag your Github stars using this tool. Built with Node, Mongo, Bootstrap, Vue, and a smattering of other things.
 
-This is the source code for the service located @ http://octostar.io. Any updates pushed to there start here.
+This is the source code for the service located @ http://octostar.io which will be launching in a few weeks. Any updates pushed to there start here.
 
 ### Application Layers
 There are two layers of this application:
