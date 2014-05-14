@@ -6,6 +6,12 @@ A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you 
 
 This is the source code for the service located @ http://octostar.io which will be launching in a few weeks. Any updates pushed to there start here.
 
+####Build Status
+
+master: [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=master)](https://travis-ci.org/therebelrobot/octostar)
+
+develop: [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=develop)](https://travis-ci.org/therebelrobot/octostar)
+
 ### Application Layers
 There are two layers of this application:
 - The UI layer, built with Bootstrap and Passport
