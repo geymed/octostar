@@ -1,10 +1,16 @@
 ![Octostar](/octostar-title.png?raw=true "Octostar")
-
+ 
 [![SemVer](http://b.repl.ca/v1/SemVer-1.0.0-blue.png)](http://semver.org)  [![Git Proper Branching Model](http://b.repl.ca/v1/Git-Proper%20Branching-lightgrey.png)](http://nvie.com/posts/a-successful-git-branching-model/)
 
 A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you can manage and tag your Github stars using this tool. Built with Node, Mongo, Bootstrap, Vue, and a smattering of other things.
 
 This is the source code for the service located @ http://octostar.io which will be launching in a few weeks. Any updates pushed to there start here.
+
+####Build Status
+
+master: [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=master)](https://travis-ci.org/therebelrobot/octostar)
+
+develop: [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=develop)](https://travis-ci.org/therebelrobot/octostar)
 
 ### Application Layers
 There are two layers of this application:
