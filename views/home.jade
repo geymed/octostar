@@ -7,14 +7,6 @@ block content
             h2 An open-source Github Star Organizer
             p
                 | Feel free to look around. Sign in using your github account. Once logged in, you can tag, sort, and otherwise organize your github starred repos.
-            form(method='POST')
-                legend Sign In
-                input(type='hidden', name='_csrf', value=token)
-                .col-sm-8.col-sm-offset-2
-                    if secrets.githubAuth
-                        a.btn.btn-block.btn-github.btn-social(href='/auth/github')
-                            i.fa.fa-github
-                            | Sign in with GitHub
     else
         #sidebar.col-md-3
             em#last-synced(v-show="lastSynced == 'never'") Retrieving Stars...
@@ -36,7 +28,6 @@ block content
                 option.sort(data-icon="fa-code",value='language') Language
                 option.sort(data-icon="fa-calendar",value='created') Date Created
             hr.activehr
-            h4 Filters
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("*")') None
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("javascript")') Javascript
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("css")') css
@@ -44,8 +35,11 @@ block content
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("c")') c
             //- button.btn.btn.btn-primary.btn-sm(v-on='click:filterby("unknown")') unknown
             
-            select.selectpicker.filter(multiple='',data-selected-text-format="values",title="Language")
-                option.filter(v-repeat='lang: languages',value=".{{lang | langfilter}}") {{lang}}
+            select.selectpicker.filter(multiple='',data-selected-text-format="values",title="<i class='fa fa-filter'></i> Filters")
+                optgroup(label="Languages")
+                    option.filter(v-repeat='lang: languages',value=".{{lang | langfilter}}") {{lang}}
+                optgroup(label="Tags")
+            span edit tags
 
         #main-content.col-md-9.clearfix
             .bs-callout.col-md-4.repo(v-repeat="repos.remote" v-effect="isotopereinit" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}' class='{{language | langfilter}} repo-{{$index}}')
