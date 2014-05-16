@@ -38,6 +38,10 @@ I personally use nodemon for development, and use supervisor for the deployment.
 ### Installation
 TODO
 
+### Contributing
+
+Please review the [Contributing Guidelines](/CONTRIBUTING.md) document found in this repo.
+
 ### Licensing and Attribution
 
 MIT
