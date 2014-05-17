@@ -217,6 +217,7 @@ var model = {
 		})
 	},
 	forceSync:function(){
+		vue.lastSynced = 'never';
 		$.get('/api/account/sync?force=true',function(res){
 			model.getStars();
 		})

@@ -13,6 +13,19 @@
 // Scaffolding
 // -------------------------
 
+html { font-size: 100%; }
+
+/* Medium screens (640px) */
+@media (min-width: 40rem) {
+  html { font-size: 112%; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) {
+  html { font-size: 120%; }
+}
+
+
 html, body {
   height: 100%;
 }
@@ -48,6 +61,16 @@ body {
 h1, h2, h3, h4, h5, h6, button {
   font-family:'adam','Helvetica',Arial,sans-serif;
 }
+
+.super{
+  display:inline;
+  font-size:0.45em;
+  vertical-align:top;
+  position:relative;
+  top:-0.7em;
+  left:3px;
+}
+
 // Navbar
 // -------------------------
 
@@ -312,5 +335,19 @@ label.disabled{
   }
   .row{
     margin-top:50px;
+  }
+  p{
+    font-size:18px;
+  }
+  ul{
+    margin-left:30px;
+    li{
+      text-align:left;
+
+    }
+  }
+  p.fine{
+    color: #3A5169;
+    font-size:0.75em;
   }
 }
