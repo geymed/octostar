@@ -2,11 +2,37 @@ extends layout
 
 block content
     if !user
-        #login-block.col-md-8
-            h1 Octostar
+        #welcome-block.col-md-12
+            img(src="img/octostar-title.png", alt="Octostar")
             h2 An open-source Github Star Organizer
-            p
-                | Feel free to look around. Sign in using your github account. Once logged in, you can tag, sort, and otherwise organize your github starred repos.
+            .row.clearfix.icons
+                .col-md-4
+                    h1 
+                        i.fa.fa-sitemap
+                    h3 Organize
+                .col-md-4
+                    h1
+                        i.fa.fa-sort-alpha-asc
+                    h3 Sort
+                .col-md-4
+                    h1
+                        i.fa.fa-tags
+                    h3 Tag
+            .row.clearfix.welcometext
+                .col-md-6
+                    h4 Welcome to the public beta of Octostar.io!
+                    p
+                        | Octostar is a pet project of Trent Oswald, and was born out of necessity. 
+                        | Upon realizing his star list was well into the multiple hundreds, Trent
+                        | realized he needed a more effecient way of organizing his bookmarks. 
+                    p
+                        | Octostar is still in pre-release beta, so features may come and go,
+                        | and you may experience odd bugs during usage. If you come across one,
+                        | please make sure to log a Github issue for it.
+                    p
+                        | This is a work done in my spare time. If you would like to contribute,
+                        | feel free to read the contributing guide on Github. If you don't code
+                        | and still want to help, please consider donating.
     else
         #sidebar.col-md-3
             em#last-synced(v-show="lastSynced == 'never'") Retrieving Stars...
