@@ -96,7 +96,7 @@ var service = {
 		filters:{
 			init:function(){
 				Vue.filter('brief', function (value) {
-					if (value.length > 100){
+					if (value && value.length > 100) {
 						return value.substring(0, 100) + "...";
 					}
 					return value;
