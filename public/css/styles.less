@@ -6,9 +6,11 @@
 @import "lib/bootstrap-social";
 @import "themes/flatly";
 
-@import "callout-colors";
 @import "font-adam";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic);
+
+@adam: "adam", Helvetica, Arial, sans-serif;
+@source: "Source Sans Pro", Helvetica, Arial, sans-serif;
 
 // Scaffolding
 // -------------------------
@@ -28,13 +30,13 @@ html { font-size: 100%; }
 
 html, body {
   height: 100%;
+  font-family:@source;
 }
-
 body {
   padding-top: 70px;
   &.dark{
    background:#2c3e50;
-  }
+ }
 }
 
 #wrap {
@@ -59,7 +61,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, button {
-  font-family:'adam','Helvetica',Arial,sans-serif;
+  font-family:@adam;
 }
 
 .super{
@@ -90,7 +92,7 @@ h1, h2, h3, h4, h5, h6, button {
   padding-left: 50px;
   margin-left: 15px;
   height: 45px;
-  font-family:'adam','Helvetica',Arial,sans-serif;
+  font-family:@adam;
   &:hover{
 
     background-image: url('../img/octostar-hover.png');
@@ -109,97 +111,16 @@ h1, h2, h3, h4, h5, h6, button {
 
 [class^="fa-"],
 [class*="fa-"] {
-  margin-right: 5px;
+  margin: 0px 5px;
 }
 
 // API Examples
 // -------------------------
 
-.thumb {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.thumb img {
-  margin-bottom: 5px;
-  margin-right: 5px;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-
-.thumb:hover img {
-  opacity: 1;
-  box-shadow: 0 0 3px 1px @brand-primary;
-}
-
-.facebook-caption {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 12px;
-  color: #fff;
-  padding: 3px;
-  bottom: 25px;
-}
-
-/* Base styles (regardless of theme) */
-.bs-callout {
-  margin: 20px 0;
-  padding: 15px 30px 15px 15px;
-  border-left: 5px solid #eee;
-  height: 200px;
-
-  background: -moz-linear-gradient(left, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
-  background: linear-gradient(to right, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
-
-}
-.bs-callout h4 {
-  margin-top: 0;
-}
-.bs-callout p:last-child {
-  margin-bottom: 0;
-}
-.bs-callout code,
-.bs-callout .highlight {
-  background-color: #fff;
-}
-
-/* Themes for different contexts */
-.bs-callout-danger {
-  background-color: #fcf2f2;
-  border-color: #d9534f;
-}
-.bs-callout-warning {
-  background-color: #fefbed;
-  border-color: #f0ad4e;
-}
-.bs-callout-info {
-  background-color: #f0f7fd;
-  border-color: #5bc0de;
-}
-
 label.disabled{
   color:@gray;
 }
 
-
-.bootstrap-switch-id-active-sync-dummy{
-  float:left;
-  margin-bottom:10px;
-}
-#active-sync{
-  display:none;
-}
-#active-sync-label{
-  float:right;
-  line-height:30px;
-  margin-bottom:10px;
-  cursor:pointer;
-}
 .activehr{
   clear:both;
   margin-bottom:10px;
@@ -220,22 +141,39 @@ label.disabled{
 }
 
 .bs-callout.repo{
+
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+  border-bottom:solid 1px #eee !important;
+  height: auto;
+
+  background: -moz-linear-gradient(left, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+
   width:100%;
   position:relative;
+  float:left;
+  @media (min-width: 40rem) {
+    width:30%
+  }
   h5{
     cursor:default;
     margin-top: 3px;
     margin-bottom: 0px;
   }
   .language{
-    position:absolute;
+    display:inline-block;
     font-size:10px;
     background:#aaa;
     color:white;
-    top: 15px;
-    right: 15px;
-    padding:5px;
-    border-radius:3px;
+    margin:5px 5px 5px 0px;
+    padding:3px 5px;
+    font-family:@source;
     font-weight:bold;
     cursor:pointer;
   }
@@ -253,10 +191,11 @@ label.disabled{
 
   }
   .tags{
-    position:absolute;
-    bottom:0px;
-    left: 12px;
-    right: 25px;
+    width:100%;
+    // position:absolute;
+    // bottom:0px;
+    // left: 12px;
+    // right: 25px;
     span{
       display:inline-block;
       padding:3px 8px;
@@ -318,13 +257,22 @@ label.disabled{
     }
   }
 }
-@media (min-width: 992px){
-  .bs-callout.repo{
-    width:30%;
-  }
-}
 .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
   width:100%;
+}
+
+.popover.bottom{
+  box-sizing:border-box;
+  width: 28.6%;
+  margin-left: 5px;
+  margin-top: 0px;
+  border-radius: 0px;
+  *{
+    box-sizing:border-box;
+  }
+  &>.arrow{
+    display:none;
+  }
 }
 
 #welcome-block{
@@ -351,3 +299,5 @@ label.disabled{
     font-size:0.75em;
   }
 }
+
+@import "callout-colors";
