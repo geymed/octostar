@@ -50,28 +50,30 @@ block content
                 i.fa.fa-refresh
             hr.activehr
             .input-group
-                input.form-control(type="text",placeholder="Search",name="srch-term")
+                input.form-control(type="text",placeholder="Search",name="srch-term", v-model="srchterm")
                 .input-group-btn
                     button.btn.btn-default(type="submit")
                         i.fa.fa-search
             h5 Filter by Language
             h5 Filter by Tag
         #main-content.col-md-9.clearfix
-            .bs-callout.repo(v-repeat="repos.remote" data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{$index}}',data-container="body",data-toggle="popover",data-placement="top",data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.")
-                h5.title(title="{{name}}") {{name}} 
-                    br
-                    span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
-                    a.small(href="{{clone_url}}",target="_blank")
-                        | Github  
-                        i.small.fa.fa-external-link
-                span.owner {{owner.login}}
+            .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="open:open",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{$index}}')
+                i.openthis.fa.fa-caret-right(v-show="!open" v-on="click:open = true")
+                i.openthis.fa.fa-caret-down(v-show="open" v-on="click:open = false")
+                h5.title(title="{{name}}" v-on="click:open = !open") {{name}} 
+                span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
+                a.small(href="{{clone_url}}",target="_blank")
+                    | {{owner.login}} 
+                    i.small.fa.fa-external-link
                 //- span.date-created created {{created_at | timeago}} 
-                //- p.description {{description | brief}}
+                p.description(v-show="open") {{description}}
                 .tags
-                    span.tag(v-repeat="tag: tags"){{tag}}
+                    span.tag(v-repeat="tag: tags") {{tag}}
                     span.tag Lorem Ipsum
-                    span.tag.add(v-on="click:addTag(name, created_at)",data-toggle="modal",data-target="#myModal")
+                    span.tag.add(v-on="click:open = true")
                         i.fa.fa-pencil
+                    //- span.tag.add(v-on="click:addTag(name, created_at)",data-toggle="modal",data-target="#myModal")
+                    //-     i.fa.fa-pencil
         #myModal.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
                   .modal-dialog
                     .modal-content

@@ -145,8 +145,7 @@ label.disabled{
   padding: 15px 30px 15px 15px;
   border-left: 5px solid #eee;
   border-bottom:solid 1px #eee !important;
-  height: auto;
-
+  height: 120px;
   background: -moz-linear-gradient(left, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(left, rgba(252,252,252,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -158,11 +157,23 @@ label.disabled{
   width:100%;
   position:relative;
   float:left;
+  &.open{
+    height: 360px; 
+    .openthis{
+      margin: 0px 3px; 
+    }
+  }
   @media (min-width: 40rem) {
     width:30%
   }
+  .openthis{
+   position:absolute;
+   top: 17px;
+   left:0px; 
+    cursor:pointer;
+  }
   h5{
-    cursor:default;
+    cursor:pointer;
     margin-top: 3px;
     margin-bottom: 0px;
   }
@@ -259,20 +270,6 @@ label.disabled{
 }
 .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
   width:100%;
-}
-
-.popover.bottom{
-  box-sizing:border-box;
-  width: 28.6%;
-  margin-left: 5px;
-  margin-top: 0px;
-  border-radius: 0px;
-  *{
-    box-sizing:border-box;
-  }
-  &>.arrow{
-    display:none;
-  }
 }
 
 #welcome-block{

@@ -3,8 +3,6 @@ var controller = {
     controller.sidebar.asyncToggle();
     controller.sidebar.sortdropdown();
     model.init();
-    service.popover.init();
-    // service.isotope.init();
   },
   sidebar: {
     asyncToggle: function() {
@@ -150,23 +148,6 @@ var service = {
       $('.selectpicker.' + tag).selectpicker('refresh');
       controller.sidebar.sortdropdown();
     }
-  },
-  popover: {
-  	init: function(){
-  		$('#main-content').popover({
-  			html: true,
-  			placement: "bottom",
-  			selector: ".repo",
-  			container: "#main-content"
-  		});
-			$('#main-content').on('click', '.repo', function(e) {
-			    // don't fall through
-			   $(".reoo").popover('hide', function(){
-			   		$('#main-content').popover('show');
-			   });
-			   
-			});
-  	}
   },
   utils:{
 	  swap: function(ref, replacement, input) {
