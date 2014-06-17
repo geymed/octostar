@@ -5,6 +5,9 @@ block content
         #welcome-block.col-md-12
             img(src="img/octostar-title.png", alt="Octostar")
             h2 An open-source Github Star Organizer
+            iframe(src="http://ghbtns.com/github-btn.html?user=therebelrobot&repo=octostar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85" height="20")
+            iframe(src="http://ghbtns.com/github-btn.html?user=therebelrobot&repo=octostar&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85" height="20")
+            iframe(src="http://ghbtns.com/github-btn.html?user=therebelrobot&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="180" height="20")
             .row.clearfix.icons
                 .col-md-4
                     h1 
@@ -12,8 +15,8 @@ block content
                     h3 Organize
                 .col-md-4
                     h1
-                        i.fa.fa-sort-alpha-asc
-                    h3 Sort
+                        i.fa.fa-search
+                    h3 Search
                 .col-md-4
                     h1
                         i.fa.fa-tags
@@ -36,9 +39,9 @@ block content
                 .col-md-6
                     h3 Features still under way:
                     p Tagging system
-                    p Search dialog
-                    p Unstar a repo 
-                    p Smoother transitions and user feedback
+                    p Filter based on language and tags
+                    p Bulk tagging and unstarring
+                    p Smoother transitions and interaction feedback
             .row
                 p.fine MIT Licensing | This tool is in no way affilliated with Github. All images, rights, and trademarks reserved by their respective owners.
     else
@@ -55,8 +58,8 @@ block content
                     button.btn.btn-default(type="submit", v-on="click:srchterm = ''", v-class="btn-primary:srchterm != ''")
                         i.fa.fa-search(v-show="srchterm == ''")
                         i.fa.fa-times(v-show="srchterm != ''")
-            h5 Filter by Language
-            h5 Filter by Tag
+            h5.disabled Filter by Language
+            h5.disabled Filter by Tag
         #main-content.col-md-9.clearfix
             .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="open:open, selected:selected",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{created_at}}')
                 i.openthis.fa.fa-caret-right(v-show="!open" v-on="click:open = true")
