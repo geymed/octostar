@@ -3,27 +3,68 @@ html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='A github star/bookmark organizer')
-    meta(name='author', content='Trent Oswald <trentoswald@therebelrobot.com>')
+    title Octostar Beta | Github Star Organizer
     link(rel="shortcut icon",href="img/favicon.ico",type="image/x-icon")
-    title Octostar | Github Star Organizer
+  
+    meta(name="description",content="A Github star/bookmark organizer. Organize, sort and manage your Github starred repositories!")
+    link(rel="author",href="https://plus.google.com/115520236797251123217")
+    
+    meta(http-equiv="X-UA-Compatible",content="IE-edge,chrome=1")
+    meta(name="keywords",content="github, tags, bookmarks, stars, sort, manage, organize, code, developers")
+    meta(name="HandheldFriendly",content="True")
+    meta(name="MobileOptimized",content="320")
+    meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(http-equiv="cleartype",content="on")
+    
+    
+    meta(property="og:title",content="Octostar.io Beta")
+    meta(property="og:type",content="website")
+    meta(property="og:image",content="http://octostar.io/img/octostar-card.png")
+    meta(property="og:description",content="Organize your Github starred repositories with this handy tool. Sort, filter, and tag your favorite repos for future use and reference.")
+    meta(property="fb:admins",content="trent.oswald") 
+    
+    
+    meta(name="twitter:card",content="summary")
+    meta(name="twitter:url",content="http://octostar.io")
+    meta(name="twitter:title",content="Octostar.io Beta")
+    meta(name="twitter:description",content="Organize your Github starred repositories with this handy tool. Sort, filter, and tag your favorite repos for future use and reference.")
+    meta(name="twitter:image",content="http://octostar.io/img/octostar-card.png")
+ 
     != css('styles')
     != js('application')
-  body#vapp
-    #wrap
-      include partials/navigation
-      .container
-        include partials/flash
-        block content
-    include partials/footer
-    script.
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-      _gaq.push(['_trackPageview']);
+  if user
+    body#vapp
+      #wrap
+        include partials/navigation
+        .container
+          include partials/flash
+          block content
+      include partials/footer
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+        _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  else
+    body#vapp.dark
+      #wrap
+        include partials/navigation
+        .container
+          include partials/flash
+          block content
+      include partials/footer
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
