@@ -58,10 +58,13 @@ block content
             h5 Filter by Language
             h5 Filter by Tag
         #main-content.col-md-9.clearfix
-            .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="open:open, selected:selected",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{$index}}')
+            .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="open:open, selected:selected",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{created_at}}')
                 i.openthis.fa.fa-caret-right(v-show="!open" v-on="click:open = true")
                 i.openthis.fa.fa-caret-down(v-show="open" v-on="click:open = false")
-                input.reposelect(type="checkbox", v-model="selected" id="select-repo-{{$index}}")
+                input.reposelect(type="checkbox", v-model="selected" name="select-repo-{{created_at}}" id="select-repo-{{created_at}}")
+                label.reposelectlabel(for="select-repo-{{created_at}}")
+                    i.fa.fa-check-square-o(v-show="selected")
+                    i.fa.fa-square-o(v-show="!selected")
                 h5.title(title="{{name}}" v-on="click:open = !open") {{name}} 
                 span.language(class="{{language | lowercase}}") {{language || 'Unknown'}} 
                 a.url.small(href="{{clone_url}}",target="_blank")
