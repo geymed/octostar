@@ -163,6 +163,16 @@ label.disabled{
       margin: 0px 3px; 
     }
   }
+  &.selected{
+    background: -moz-linear-gradient(left, rgba(211,211,190,0.4) 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(211,211,190,0.4)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(211,211,190,0.4) 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(211,211,190,0.4) 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(211,211,190,0.4) 0%,rgba(125,185,232,0) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(211,211,190,0.4) 0%,rgba(125,185,232,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66d3d3be', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+
+  }
   @media (min-width: 40rem) {
     width:30%
   }
@@ -172,10 +182,22 @@ label.disabled{
    left:0px; 
     cursor:pointer;
   }
+  .reposelect{
+   position:absolute;
+   top: 17px;
+   right:10px; 
+    cursor:pointer;
+     
+  }
   h5{
     cursor:pointer;
     margin-top: 3px;
     margin-bottom: 0px;
+  }
+  .url{
+    i{
+      margin-left: 0;
+    } 
   }
   .language{
     display:inline-block;
@@ -187,16 +209,6 @@ label.disabled{
     font-family:@source;
     font-weight:bold;
     cursor:pointer;
-  }
-  .owner{
-    font-size:10px;
-    position: relative;
-    top: -5px;
-  }
-  .date-created{
-    font-size:10px;
-    float:right;
-    margin-right:-15px;
   }
   .description{
 
