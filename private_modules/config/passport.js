@@ -62,7 +62,15 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
       if (existingUser) return done(null, existingUser);
       User.findOne({ email: profile._json.email }, function(err, existingEmailUser) {
         if (existingEmailUser) {
-          req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with GitHub manually from Account Settings.' });
+          req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with GitHub manually from Account Settings.' }); 
+          /* 
+            TODO: 
+            This error is thrown when there is two users, both have profile is setup, but no email is set, and one user is already registered in app.
+              a.k.a = Email Empty User
+            
+            NEED TO TEST TWO USERS WHO DO NOT SET UP PROFILE
+              a.k.a = Email Missing User
+          */
           done(err);
         } else {
           var user = new User();
