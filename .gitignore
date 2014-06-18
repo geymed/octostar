@@ -8,7 +8,7 @@ lib-cov
 *.gz
 *.swp
 *.save
-secrets.js
+*.bak
 
 pids
 logs
@@ -23,5 +23,6 @@ node_modules
 Thumbs.db
 
 public/css/styles.css
+private_modules/config/secrets.js
 
 builtAssets
