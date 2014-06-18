@@ -6,13 +6,13 @@ A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you 
 
 This is the source code for the service located @ http://octostar.io which will be launching in a few weeks. Any updates pushed to there start here.
 
-This build is using [Zenhub.io](https://www.zenhub.io/) for keeping my workflow lean and agile. There are 4 sections in the Zenhub Board for this project:
-- Current: The issues I am working on for the next version release
-- Backlog: The issues that will be worked on for the following
-- Icebox: Issues that are for any following releases
-- Up for Debate: Any issues that are presented, but not yet approved for implementation.
+This build is using **[Zenhub.io](https://www.zenhub.io/)** in connection with Github Issues for bug tracking. There are 4 sections in the Zenhub Board for this project:
+- **Current**: *The issues I am working on for the next version release*
+- **Backlog**: *The issues that will be worked on for the following*
+- **Icebox**: *Issues that are for any following releases*
+- **Up for Debate**: *Any issues that are presented, but not yet approved for implementation.*
 
-I will be tagging issues with version milestones, of course, but if you want to see how I'm organizing those issues, feel free to [install the chrome plugin](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd) and take a look.
+You will still be able to create and see issues as normal, and I will be tagging issues with version milestones, of course, but if you want to see how I'm organizing those issues, feel free to [install the chrome plugin](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd) and take a look.
 
 ####Build Status
 
