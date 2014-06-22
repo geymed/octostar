@@ -75,41 +75,6 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
       github: profile.id
     }, function(err, existingUser) {
       if (existingUser) return done(null, existingUser);
-<<<<<<< Updated upstream
-      User.findOne({ email: profile._json.email }, function(err, existingEmailUser) {
-        if (existingEmailUser) {
-          req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with GitHub manually from Account Settings.' }); 
-          /* 
-            TODO: 
-            This error is thrown when there is two users, both have profile is setup, but no email is set, and one user is already registered in app.
-              a.k.a = Email Empty User
-            
-            NEED TO TEST TWO USERS WHO DO NOT SET UP PROFILE
-              a.k.a = Email Missing User
-          */
-          done(err);
-        } else {
-          var user = new User();
-          user.email = profile._json.email;
-          user.github = profile.id;
-          user.tokens.push({ kind: 'github', accessToken: accessToken });
-          user.profile.name = profile.displayName;
-          user.profile.picture = profile._json.avatar_url;
-          user.profile.location = profile._json.location;
-          user.profile.website = profile._json.blog;
-          user.save(function(err) {
-            var repo = new Repo();
-            repo.id = profile.id;
-            repo.repos = {};
-            repo.repos.local = [];
-            repo.repos.remote = [];
-            repo.save(function(err) {
-              done(err, user);
-            });
-          });
-        }
-=======
-
       var user = new User();
       user.email = profile._json.email;
       user.github = profile.id;
@@ -131,7 +96,6 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
         repo.save(function(err) {
           done(err, user);
         });
->>>>>>> Stashed changes
       });
 
     });
