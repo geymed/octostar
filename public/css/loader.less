@@ -1,12 +1,22 @@
 /* Loader originally from http://codepen.io/Fahrenheit/pen/Kbyxu */
 
-@color1:#2ecc71;
-@color2:#3498db;
-@color3:#9b59b6;
-@color4:#e67e22;
-@color5:#c0392b;
-@color6:#e74c3c;
-@color7:#e74c8c;
+@color1:#2ecc71; // load-1
+@color2:#3498db; // load-2
+@color3:#9b59b6; // load-3
+@color4:#e67e22; // load-4
+@color5:#c0392b; // load-5
+@color6:#e74c3c; // load-6
+@color7:#e74c8c; // load-7
+
+@interval:1.2s;
+
+@delay1:-1s;   // load-1
+@delay2:-0.9s; // load-2
+@delay3:-0.8s; // load-3
+@delay4:-0.7s; // load-4
+@delay5:-0.6s; // load-5
+@delay6:-0.5s; // load-6
+@delay7:-0.4s; // load-7
 
 .loader {
   position: absolute;
@@ -28,11 +38,11 @@
   -moz-animation-name: scale;
   -ms-animation-name: scale;
   -o-animation-name: scale;
-  animation-duration: 1.2s;
-  -webkit-animation-duration: 1.2s;
-  -moz-animation-duration: 1.2s;
-  -ms-animation-duration: 1.2s;
-  -o-animation-duration: 1.2s;
+  animation-duration: @interval;
+  -webkit-animation-duration: @interval;
+  -moz-animation-duration: @interval;
+  -ms-animation-duration: @interval;
+  -o-animation-duration: @interval;
   animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
@@ -62,59 +72,59 @@
 }
 
 .load-1 {
-  animation-delay: -1s;
-  -webkit-animation-delay: -1s;
-  -moz-animation-delay: -1s;
-  -ms-animation-delay: -1s;
-  -o-animation-delay: -1s;
+  animation-delay: @delay1;
+  -webkit-animation-delay: @delay1;
+  -moz-animation-delay: @delay1;
+  -ms-animation-delay: @delay1;
+  -o-animation-delay: @delay1;
 }
 
 .load-2 {
-  animation-delay: -0.9s;
-  -webkit-animation-delay: -0.9s;
-  -moz-animation-delay: -0.9s;
-  -ms-animation-delay: -0.9s;
-  -o-animation-delay: -0.9s;
+  animation-delay: @delay2;
+  -webkit-animation-delay: @delay2;
+  -moz-animation-delay: @delay2;
+  -ms-animation-delay: @delay2;
+  -o-animation-delay: @delay2;
 }
 
 .load-3 {
-  animation-delay: -0.8s;
-  -webkit-animation-delay: -0.8s;
-  -moz-animation-delay: -0.8s;
-  -ms-animation-delay: -0.8s;
-  -o-animation-delay: -0.8s;
+  animation-delay: @delay3;
+  -webkit-animation-delay: @delay3;
+  -moz-animation-delay: @delay3;
+  -ms-animation-delay: @delay3;
+  -o-animation-delay: @delay3;
 }
 
 .load-4 {
-  animation-delay: -0.7s;
-  -webkit-animation-delay: -0.7s;
-  -moz-animation-delay: -0.7s;
-  -ms-animation-delay: -0.7s;
-  -o-animation-delay: -0.7s;
+  animation-delay: @delay4;
+  -webkit-animation-delay: @delay4;
+  -moz-animation-delay: @delay4;
+  -ms-animation-delay: @delay4;
+  -o-animation-delay: @delay4;
 }
 
 .load-5 {
-  animation-delay: -0.6s;
-  -webkit-animation-delay: -0.6s;
-  -moz-animation-delay: -0.6s;
-  -ms-animation-delay: -0.6s;
-  -o-animation-delay: -0.6s;
+  animation-delay: @delay5;
+  -webkit-animation-delay: @delay5;
+  -moz-animation-delay: @delay5;
+  -ms-animation-delay: @delay5;
+  -o-animation-delay: @delay5;
 }
 
 .load-6 {
-  animation-delay: -0.5s;
-  -webkit-animation-delay: -0.5s;
-  -moz-animation-delay: -0.5s;
-  -ms-animation-delay: -0.5s;
-  -o-animation-delay: -0.5s;
+  animation-delay: @delay6;
+  -webkit-animation-delay: @delay6;
+  -moz-animation-delay: @delay6;
+  -ms-animation-delay: @delay6;
+  -o-animation-delay: @delay6;
 }
 
 .load-7 {
-  animation-delay: -0.4s;
-  -webkit-animation-delay: -0.4s;
-  -moz-animation-delay: -0.4s;
-  -ms-animation-delay: -0.4s;
-  -o-animation-delay: -0.4s;
+  animation-delay: @delay7;
+  -webkit-animation-delay: @delay7;
+  -moz-animation-delay: @delay7;
+  -ms-animation-delay: @delay7;
+  -o-animation-delay: @delay7;
 }
 
 @-webkit-keyframes scale {
