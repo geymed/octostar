@@ -16,9 +16,9 @@ You will still be able to create and see issues as normal, and I will be tagging
 
 ####Build Status
 
-master: [![SemVer](http://b.repl.ca/v1/SemVer-0.2.0-blue.png)](http://semver.org)  [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=master)](https://travis-ci.org/therebelrobot/octostar)
+master: [![SemVer](http://b.repl.ca/v1/SemVer-0.2.1-blue.png)](http://semver.org)  [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=master)](https://travis-ci.org/therebelrobot/octostar)
 
-develop: [![SemVer](http://b.repl.ca/v1/SemVer-0.2.0--alpha-blue.png)](http://semver.org) [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=develop)](https://travis-ci.org/therebelrobot/octostar)
+develop: [![SemVer](http://b.repl.ca/v1/SemVer-0.3.0--alpha-blue.png)](http://semver.org) [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=develop)](https://travis-ci.org/therebelrobot/octostar)
 
 ### Application Layers
 There are two layers of this application:

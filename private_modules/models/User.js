@@ -3,12 +3,10 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
 var userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, lowercase: true },
+  github: { type: String, unique: true},
+  email: { type: String, lowercase: true },
   password: String,
-
-  github: String,
   tokens: Array,
-
   profile: {
     name: { type: String, default: '' },
     gender: { type: String, default: '' },
@@ -16,7 +14,6 @@ var userSchema = new mongoose.Schema({
     website: { type: String, default: '' },
     picture: { type: String, default: '' }
   },
-
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });
