@@ -1,6 +1,6 @@
 {
   "name": "octostar",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/therebelrobot/octostar.git"
@@ -25,11 +25,9 @@
     "nodemailer": "~0.6.0",
     "passport": "~0.2.0",
     "passport-github": "~0.1.5",
-    "request": "~2.34.0",
     "underscore": "~1.6.0",
     "uglify-js": "~2.4.12",
     "validator": "~3.4.0",
-    "curlrequest": "~0.4.1",
     "require-private": "~1.0.2"
   },
   "devDependencies": {

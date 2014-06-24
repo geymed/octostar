@@ -45,6 +45,15 @@ block content
             .row
                 p.fine MIT Licensing | This tool is in no way affilliated with Github. All images, rights, and trademarks reserved by their respective owners.
     else
+        
+        .loader(v-show="lastSynced == 'never'")
+            span.loadbar.load-1
+            span.loadbar.load-2
+            span.loadbar.load-3
+            span.loadbar.load-4
+            span.loadbar.load-5
+            span.loadbar.load-6
+            span.loadbar.load-7
         #sidebar.col-md-3
             em#last-synced(v-show="lastSynced == 'never'") Retrieving Stars...
             em#last-synced(v-show="lastSynced !== 'never'") Last synced {{lastSynced}}
@@ -61,7 +70,7 @@ block content
             h5.disabled Filter by Language
             h5.disabled Filter by Tag
         #main-content.col-md-9.clearfix
-            .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="open:open, selected:selected",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{created_at}}')
+            .bs-callout.repo(v-repeat="repos.remote | filterBy srchterm", v-class="loading:lastSynced == 'never',open:open, selected:selected",data-language='{{language | langfilter}}' data-name='{{name}}' data-owner='{{owner.login}}' data-created='{{created_at}}' data-tag='{{tags | list}}',class='{{language | langfilter}} repo-{{created_at}}')
                 i.openthis.fa.fa-caret-right(v-show="!open" v-on="click:open = true")
                 i.openthis.fa.fa-caret-down(v-show="open" v-on="click:open = false")
                 input.reposelect(type="checkbox", v-model="selected" name="select-repo-{{created_at}}" id="select-repo-{{created_at}}")
