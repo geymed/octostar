@@ -104,8 +104,12 @@ var service = {
           return value;
         });
         Vue.filter('langfilter', function(value) {
-          if (value) {
-            return value.toLowerCase();
+          var lang = value;
+          if (lang) {
+            lang = lang.toLowerCase();
+            lang = lang.replace(/ /g, "-");
+            lang = lang.replace(/\+/g, "p");
+            return lang;
           }
           return 'unknown'
         });
