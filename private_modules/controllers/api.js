@@ -42,7 +42,6 @@ exports.account = {
                 }
               };
               var request = https.request(options, function(response) {
-                console.log('response');
                 var buffer = "";
                 var data;
                 response.on("data", function(chunk) {
