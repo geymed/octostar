@@ -6,8 +6,10 @@
 @import "lib/bootstrap-social";
 @import "themes/flatly";
 
+@import "loader";
 @import "font-adam";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic);
+// @import callout-colors is at the bottom of this stylesheet.
 
 @adam: "adam", Helvetica, Arial, sans-serif;
 @source: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -164,6 +166,13 @@ label.disabled{
   width:100%;
   position:relative;
   float:left;
+  
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  
   &.open{
     height: 360px; 
     .openthis{
@@ -179,6 +188,9 @@ label.disabled{
     background: linear-gradient(to right, rgba(211,211,190,0.4) 0%,rgba(125,185,232,0) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66d3d3be', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
 
+  }
+  &.loading{
+    opacity:.5; 
   }
   @media (min-width: 40rem) {
     width:30%
@@ -322,4 +334,4 @@ label.disabled{
   }
 }
 
-@import "callout-colors";
+@import "callout-colors-new";

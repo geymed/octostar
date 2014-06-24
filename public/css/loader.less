@@ -1,0 +1,191 @@
+/* Loader originally from http://codepen.io/Fahrenheit/pen/Kbyxu */
+
+@color1:#2ecc71; // load-1
+@color2:#3498db; // load-2
+@color3:#9b59b6; // load-3
+@color4:#e67e22; // load-4
+@color5:#c0392b; // load-5
+@color6:#e74c3c; // load-6
+@color7:#e74c8c; // load-7
+
+@interval:1.2s;
+
+@delay1:-1s;   // load-1
+@delay2:-0.9s; // load-2
+@delay3:-0.8s; // load-3
+@delay4:-0.7s; // load-4
+@delay5:-0.6s; // load-5
+@delay6:-0.5s; // load-6
+@delay7:-0.4s; // load-7
+
+.loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 20%;
+  margin: auto;
+  width: 200px;
+  height: 80px;
+}
+
+.loadbar {
+  display: inline-block;
+  width: 10px;
+  height: 40px;
+  margin-right: 5px;
+  margin-left: 5px;
+  animation-name: scale;
+  -webkit-animation-name: scale;
+  -moz-animation-name: scale;
+  -ms-animation-name: scale;
+  -o-animation-name: scale;
+  animation-duration: @interval;
+  -webkit-animation-duration: @interval;
+  -moz-animation-duration: @interval;
+  -ms-animation-duration: @interval;
+  -o-animation-duration: @interval;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+}
+.loadbar.load-1 {
+  background: @color1;
+}
+.loadbar.load-2 {
+  background: @color2;
+}
+.loadbar.load-3 {
+  background: @color3;
+}
+.loadbar.load-4 {
+  background: @color4;
+}
+.loadbar.load-5 {
+  background: @color5;
+}
+.loadbar.load-6 {
+  background: @color6;
+}
+.loadbar.load-7 {
+  background: @color7;
+}
+
+.load-1 {
+  animation-delay: @delay1;
+  -webkit-animation-delay: @delay1;
+  -moz-animation-delay: @delay1;
+  -ms-animation-delay: @delay1;
+  -o-animation-delay: @delay1;
+}
+
+.load-2 {
+  animation-delay: @delay2;
+  -webkit-animation-delay: @delay2;
+  -moz-animation-delay: @delay2;
+  -ms-animation-delay: @delay2;
+  -o-animation-delay: @delay2;
+}
+
+.load-3 {
+  animation-delay: @delay3;
+  -webkit-animation-delay: @delay3;
+  -moz-animation-delay: @delay3;
+  -ms-animation-delay: @delay3;
+  -o-animation-delay: @delay3;
+}
+
+.load-4 {
+  animation-delay: @delay4;
+  -webkit-animation-delay: @delay4;
+  -moz-animation-delay: @delay4;
+  -ms-animation-delay: @delay4;
+  -o-animation-delay: @delay4;
+}
+
+.load-5 {
+  animation-delay: @delay5;
+  -webkit-animation-delay: @delay5;
+  -moz-animation-delay: @delay5;
+  -ms-animation-delay: @delay5;
+  -o-animation-delay: @delay5;
+}
+
+.load-6 {
+  animation-delay: @delay6;
+  -webkit-animation-delay: @delay6;
+  -moz-animation-delay: @delay6;
+  -ms-animation-delay: @delay6;
+  -o-animation-delay: @delay6;
+}
+
+.load-7 {
+  animation-delay: @delay7;
+  -webkit-animation-delay: @delay7;
+  -moz-animation-delay: @delay7;
+  -ms-animation-delay: @delay7;
+  -o-animation-delay: @delay7;
+}
+
+@-webkit-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-moz-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-ms-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
