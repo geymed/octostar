@@ -2,3 +2,28 @@
    VARIABLES
    ========================================================================== */
 
+/* 
+  Colors 
+    ref: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
+*/
+
+/* Main Palette: Blue Grey */
+$main-mid:#607d8b;
+$main-light:#cfd8dc;
+$main-dark:#455a64;
+
+/* Accent Palette: Deep Orange */
+$accent-mid:#ff6e40; //Main Accent Color
+$accent-light:#ff9e80; // Fallback 1
+$accent-dark:#ff3d00; // Fallback 2
+
+/* Text Colors */
+$dark-text-main:rgba(0,0,0,.87);
+$dark-text-secondary:rgba(0,0,0,.54);
+$dark-text-hint:rgba(0,0,0,.26);
+$dark-text-divider:rgba(0,0,0,.12);
+
+$light-text-main:rgba(255,255,255,.87);
+$light-text-secondary:rgba(255,255,255,.54);
+$light-text-hint:rgba(255,255,255,.26);
+$light-text-divider:rgba(255,255,255,.12);
