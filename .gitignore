@@ -10,6 +10,9 @@ lib-cov
 *.save
 *.bak
 
+.sass-cache/
+build/
+
 pids
 logs
 results
