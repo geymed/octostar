@@ -1,17 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>
-      MNML
-    </title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/i.css">
-  </head>
-  <body>
-    <h1 style="text-align: center; padding-top:2em;">superfragilisticexpialidocious</h1>
-  </body>
+<html lang="en" ng-app="constella">
+<head>
+  <meta charset='utf-8' />
+  <meta http-equiv='X-UA-Compatible', content='IE=edge' />
+  <title> 
+    Constella Beta | Github Star Organizer
+  </title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  
+  <meta name="description" content="A Github star/bookmark organizer. Organize, sort and manage your Github starred repositories!" />
+  <link rel="author" href="https://plus.google.com/115520236797251123217" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1" />
+  <meta name="keywords" content="github, tags, bookmarks, stars, sort, manage, organize, code, developers" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="cleartype" content="on" />
+  
+  <meta property="og:title" content="Constella.io Beta" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://constella.io/img/constella-card.png" />
+  <meta property="og:description" content="Organize your Stars! With this handy tool, sort, filter, and tag your Github starred repositories for future use and reference." />
+  <meta property="fb:admins" content="trent.oswald") />
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="http://constella.io" />
+  <meta name="twitter:title" content="Constella.io Beta" />
+  <meta name="twitter:description" content="Organize your Stars! With this handy tool, sort, filter, and tag your Github starred repositories for future use and reference." />
+  <meta name="twitter:image" content="http://constella.io/img/constella-card.png" />
+  
+  <!-- Styles -->
+  
+  <!-- Javascript -->
+  
+</head>
+<body ng-controller="mainCtrl">
+  <div id="filterbar">
+    <div class="collapsefilter"></div>
+    <div class="logo"></div>
+    <div class="sync"></div>
+    <div class="search"></div>
+    <div class="sort"></div>
+    <div class="filter"></div>
+    <div class="tags"></div>
+  </div>
+  <div id="toolbar">
+    <div class="logo"></div>
+    <div class="btn btn-menu"></div>
+    <div class="btn btn-profile float-right"></div>
+  </div>
+  <div id="maincontent">
+    <div class="filterinfo"></div>
+    <div class="repos"></div>
+  </div>
+  <div id="accountbar">
+    <div class="collapseaccount"></div>
+    <div class="logout"></div>
+    <div class="accountinfo">
+      
+    </div>
+    <div class="deleteaccount"></div>
+  </div>
+</body>
 </html>
