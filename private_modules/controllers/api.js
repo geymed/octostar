@@ -37,7 +37,7 @@ exports.account = {
                 hostname: 'api.github.com',
                 path: '/user/' + userid + '/starred?access_token=' + token + '&per_page=100&page='+pageIndex,
                 headers: {
-                  'User-Agent': 'Octostar',
+                  'User-Agent': 'Constella',
                   'Accept': 'application/json'
                 }
               };

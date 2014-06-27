@@ -16,7 +16,7 @@ There are lots and lots of ways to get involved, this document covers:
 <a name="raising-issues"></a>
 ## Reporting An Issue
 
-If you're about to raise an issue because think you've found a problem with Octostar, or you'd like to make a request
+If you're about to raise an issue because think you've found a problem with Constella, or you'd like to make a request
 for a new feature in the codebase, or any other reason… please read this first.
 
 The GitHub issue tracker is the preferred channel for [bug reports](#bugs),
@@ -42,7 +42,7 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `master` or look for [closed issues in the current milestone](https://github.com/therebelrobot/octostar/issues?labels=&milestone=3&page=1&state=closed).
+   latest `master` or look for [closed issues in the current milestone](https://github.com/therebelrobot/constella/issues?labels=&milestone=3&page=1&state=closed).
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
@@ -74,7 +74,7 @@ reported. Especially, why do you consider this to be a bug? What do you expect t
 
 ### Technical details:
 
-* Octostar Version: master (latest commit: [hash])
+* Constella Version: master (latest commit: [hash])
 * Client OS: Mac OS X 10.8.4
 * Server OS: CentOS 6.4
 * Node Version: 0.10.16
@@ -98,7 +98,7 @@ likely to be common.
 <a name="changes"></a>
 ### Change Requests
 
-Change requests cover both architectural and functional changes to how Octostar works. If you have an idea for a
+Change requests cover both architectural and functional changes to how Constella works. If you have an idea for a
 new or different dependency, a refactor, or an improvement to a feature, etc  - please be sure to:
 
 1. **Use the GitHub search** and check someone else didn't get there first
@@ -113,10 +113,10 @@ what's already there? Does it fit with the Roadmap?
 Pull requests are awesome. If you're looking to raise a PR for something which doesn't have an open issue, please think carefully about [raising an issue](#raising-issues) which your PR can close, especially if you're fixing a bug. This makes it more likely that there will be enough information available for your PR to be properly tested and merged. To make sure your PR is accepted as quickly as possible, you should be sure to have read
 all the guidelines on:
 
-* [code standards](https://github.com/therebelrobot/octostar/wiki/Code-standards)
-* [commit messages](https://github.com/therebelrobot/octostar/wiki/Git-workflow#commit-messages)
-* [cleaning-up history](https://github.com/therebelrobot/octostar/wiki/Git-workflow#wiki-clean-up-history)
-* [not breaking the build](https://github.com/therebelrobot/octostar/wiki/Git-workflow#check-it-passes-the-tests)
+* [code standards](https://github.com/therebelrobot/constella/wiki/Code-standards)
+* [commit messages](https://github.com/therebelrobot/constella/wiki/Git-workflow#commit-messages)
+* [cleaning-up history](https://github.com/therebelrobot/constella/wiki/Git-workflow#wiki-clean-up-history)
+* [not breaking the build](https://github.com/therebelrobot/constella/wiki/Git-workflow#check-it-passes-the-tests)
 
 <a name="finalthoughts"></a>
 ### Final Thoughts

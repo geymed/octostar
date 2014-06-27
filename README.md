@@ -1,10 +1,8 @@
-![Octostar](/octostar-title.png?raw=true "Octostar")
- 
-[![Git Proper Branching Model](http://b.repl.ca/v1/Git-Proper%20Branching-lightgrey.png)](http://nvie.com/posts/a-successful-git-branching-model/)
+![constella](/constella-title.png?raw=true "constella")
 
-A bookmark organizer for Github Stars. Built off the Hackathon starter kit, you can manage and tag your Github stars using this tool. Built with Node, Mongo, Bootstrap, Vue, and a smattering of other things.
+A bookmark organizer for Github Stars. You can manage and tag your Github stars using this tool. Built with Node, Mongo, Bootstrap, Vue, and a smattering of other things.
 
-This is the source code for the service located @ http://octostar.io which will be launching in a few weeks. Any updates pushed to there start here.
+This is the source code for the service located @ [constella.io](http://constella.io). Any updates pushed to there start here.
 
 This build is using **[Zenhub.io](https://www.zenhub.io/)** in connection with Github Issues for bug tracking. There are 4 sections in the Zenhub Board for this project:
 - **Current**: *The issues I am working on for the next version release*
@@ -16,9 +14,9 @@ You will still be able to create and see issues as normal, and I will be tagging
 
 ####Build Status
 
-master: [![SemVer](http://b.repl.ca/v1/SemVer-0.3.1-blue.png)](http://semver.org)  [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=master)](https://travis-ci.org/therebelrobot/octostar)
+master: [![SemVer](http://b.repl.ca/v1/SemVer-0.3.1-blue.png)](http://semver.org)  [![Build Status](https://secure.travis-ci.org/therebelrobot/constella.png?branch=master)](https://travis-ci.org/therebelrobot/constella)
 
-develop: [![SemVer](http://b.repl.ca/v1/SemVer-0.4.0--alpha-blue.png)](http://semver.org) [![Build Status](https://secure.travis-ci.org/therebelrobot/octostar.png?branch=develop)](https://travis-ci.org/therebelrobot/octostar)
+develop: [![SemVer](http://b.repl.ca/v1/SemVer-0.4.0--alpha-blue.png)](http://semver.org) [![Build Status](https://secure.travis-ci.org/therebelrobot/constella.png?branch=develop)](https://travis-ci.org/therebelrobot/constella)
 
 ### Application Layers
 There are two layers of this application:
@@ -41,7 +39,7 @@ I personally use nodemon for development, and use supervisor for the deployment.
 - `/auth/github` - Used for github authentication
 - `/auth/github/callback` - Used for github authentication. Supply this to your github app settings.
 - `/api/account/sync` - JSON API - Used to sync Github Starred list with locally stored version
-- `/api/account/stars` - JSON API - Retrieve both the original list stored locally, and any additions made available through Octostar
+- `/api/account/stars` - JSON API - Retrieve both the original list stored locally, and any additions made available through constella
 
 ### Installation
 TODO
