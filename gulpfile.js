@@ -1,86 +1,95 @@
+/**
+================
+  DEPENDENCIES
+================
+**/
+
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    watch = require('gulp-watch'),
-    prefix = require('gulp-autoprefixer'),
-    minifyCSS = require('gulp-minify-css'),
-    sass = require('gulp-ruby-sass'),
-    csslint = require('gulp-csslint'),
-    browserSync = require('browser-sync'),
-    browserReload = browserSync.reload;
+    gutil = require('gulp-util');
+    
+    /*
+    
+    Need modules for:
+      sass preprocessing
+      minify css
+      delete files
+      copy files
+      minify html
+      browserify
+      minify js (angularmin?)
+    
+    */
+
+
+/**
+====================
+  PATH DEFINITIONS
+====================
+**/
 
 var source = {
   BASE:'./src',
-  css:{
-    lib:[],
-    local:[],
-    min:[]
-  },
-  html:[],
-  templates:[],
-  js:{
-    lib:[],
-    local:[]
-  },
-  assets:[]
-}
+  html:{
+    index: this.BASE+'/html/index.html',
+    templates:this.BASE+'/html/templates/**/*.html'
+  }
+  sass:this.BASE+'/scss/main.scss',
+  js:this.BASE+'/js/app.js',
+  assets:this.BASE+'/assets/**/*'
+};
 
-var dest:{
+var temp = {
+  BASE:'./temp',
+  html:{
+    templates:this.BASE+'/html/templates'
+  }
+  sass:this.BASE+'/scss',
+  js:this.BASE+'/js',
+};
+
+var dest = {
   BASE:'./build',
-  html:'',
-  sass:'',
-  css:'',
-  js:'',
-  assets:''
-}
+  html:{
+    index: this.BASE+'/index.html',
+    templates:this.BASE+'/html/templates'
+  }
+  sass:this.BASE+'/css/main.css',
+  js:this.BASE+'/js/main.js',
+  assets:this.BASE+'/**/*'
+};
 
-gulp.task('minify-css', function(){
-  gulp.src('./css/*.css')
-    .pipe(minifyCSS({keepSpecialComments: 0}))
-    .pipe(gulp.dest('./css/i.min.css'));
+
+/**
+==================
+  INTERNAL TASKS
+==================
+**/
+
+/* SASS preprocess local CSS */
+
+/* Minify local CSS (+cleanup)*/
+
+/* Copy lib CSS */
+
+/* minify/copy index HTML (+cleanup) */
+
+/* minify/copy template HTML (+cleanup) */
+
+/* browserify/minify local JS (+cleanup) */
+
+/* copy lib JS */
+
+/* copy any assets (images, fonts, etc.) */
+
+
+/**
+================
+  CLI COMMANDS
+================
+**/
+
+/* Default Task - Development */
+gulp.task('default', ['pre-process'], function(){
+  
 });
-
-gulp.task('csslint', function(){
-  gulp.src('./css/*.css')
-    .pipe(csslint({
-          'compatible-vendor-prefixes': false,
-          'box-sizing': false,
-          'important': false,
-          'known-properties': false
-        }))
-    .pipe(csslint.reporter());
-});
-
-gulp.task('pre-process', function(){
-  gulp.src('./sass/i.scss')
-      .pipe(watch(function(files) {
-        return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
-          .pipe(prefix())
-          .pipe(gulp.dest('css'))
-          .pipe(browserSync.reload({stream:true}));
-      }));
-});
-
-gulp.task('browser-sync', function() {
-    browserSync.init(null, {
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
-
-
-
-
-
-
-gulp.task('default', ['pre-process', 'bs-reload', 'browser-sync'], function(){
-  gulp.start('pre-process', 'csslint');
-  gulp.watch('sass/*.scss', ['pre-process']);
-  gulp.watch('css/*', ['bs-reload']);
-  gulp.watch('*.html', ['bs-reload']);
-});
-
+/* Build Task - Deployment */
