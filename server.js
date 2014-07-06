@@ -41,14 +41,14 @@ var month = (day * 30);
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('ip_address', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 app.use(connectAssets({
-  paths: ['public/css', 'public/js'],
+  paths: ['build/css', 'build/js', 'build/components'],
   helperContext: app.locals
 }));
 
 app.use(express.compress());
-app.use(express.favicon("public/img/favicon.ico")); 
+app.use(express.favicon("build/favicon.ico")); 
 app.use(express.logger('dev'));
 app.use(express.cookieParser());
 app.use(express.json());
@@ -72,7 +72,7 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(flash());
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: month }));
+app.use(express.static(path.join(__dirname, 'build'), { maxAge: month }));
 app.use(function(req, res, next) {
   // Keep track of previous URL
   if (req.method !== 'GET') return next();
