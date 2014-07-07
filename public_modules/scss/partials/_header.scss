@@ -1,3 +1,41 @@
 #header {
-
+	display:block;
+	width: 100%;
+	background-color: $main-mid;
+	color: $light-text-main;
+	padding-left: 40px;
+	padding-right: 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	@include box-shadow(0px,0px,10px,rgba(0,0,0,0.5));
+	.logo, .logo div, .account, .account div{
+		display:inline-block;
+	}
+	.logo{
+		height:40px;
+		line-height:45px;
+		@include fontsize(title);
+		text-transform:uppercase;
+		.super{
+			@include fontsize(super);
+			text-transform:lowercase;
+		}
+	}
+	.account{
+		float: right;
+		height:40px;
+		line-height:40px;
+		position: relative;
+		.account-photo{
+			position:absolute;
+			top:3px;
+			left: -37px;
+		}
+		.account-user{
+			@include fontsize(menu);
+			height:40px;
+			line-height:45px;
+		}
+	}
 }

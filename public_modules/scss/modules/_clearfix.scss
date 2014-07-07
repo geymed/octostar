@@ -2,7 +2,7 @@
   content: ' ';
   display: table;
 }
-.clear {
+.clearfix {
   *zoom: 1;
   &:before {
     @extend %clear;

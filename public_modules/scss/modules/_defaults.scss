@@ -7,7 +7,14 @@ html {
   font-size: 62.5%;
 }
 body {
-  font: 300 13px/1.6 'Helvetica Neue', Helvetica, Arial;
+  font-family: 'CooperHewitt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  @include fontsize();
   background: #fff;
-  color: #444;
+  color: $dark-text-main;
+}
+.container{
+	max-width:1040px;
+	width:100%;
+	margin:auto;
+	display:block;
 }

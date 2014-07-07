@@ -1,8 +1,20 @@
+
+//----------------------------------*\
+// VENDOR
+//----------------------------------*/
+
+@import 'vendor/normalize.scss';
+@import 'vendor/font-awesome.scss';
+
 //----------------------------------*\
 // SCSS MIXINS
 //----------------------------------*/
 
 @import 'mixins/_position.scss';
+@import 'mixins/_breakpoint.scss';
+@import 'mixins/_fontsize.scss';
+@import 'mixins/_fontface.scss';
+@import 'mixins/_box-shadow.scss';
 
 //----------------------------------*\
 // CONFIG MODULES
@@ -11,6 +23,7 @@
 // Config modules
 @import 'modules/_vars.scss';
 @import 'modules/_clearfix.scss';
+@import 'modules/_typography.scss';
 @import 'modules/_defaults.scss';
 
 //----------------------------------*\
@@ -28,16 +41,8 @@
 @import 'modules/_buttons.scss';
 @import 'modules/_inputs.scss';
 @import 'modules/_lists.scss';
-@import 'modules/_typography.scss';
 @import 'modules/_misc.scss';
 @import 'modules/_app.scss';
 
 // Enhancement modules
-@import 'modules/_breakpoints.scss';
 @import 'modules/_print.scss';
-
-//----------------------------------*\
-// VENDOR
-//----------------------------------*/
-
-@import 'vendor/normalize.scss';

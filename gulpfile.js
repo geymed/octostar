@@ -39,9 +39,13 @@ var paths = {
     src: 'public_modules/assets/img/**/*',
     dest: 'build/assets/img'
   },
-  favicon: {
+  icons: {
     src: 'public_modules/assets/icons/**/',
     dest: 'build'
+  },
+  fonts: {
+    src: 'public_modules/assets/fonts/**/',
+    dest: 'build/assets/fonts'
   },
 
   index: {
@@ -81,12 +85,14 @@ var paths = {
 /**
  * Stylesheets tasks
  */
-gulp.task('styles', function () {
+gulp.task('styles', function() {
   gulp.src(paths.watch.styles)
-    .pipe(watch(function (files) {
+    .pipe(watch(function(files) {
       return gulp.src(paths.scss.src).pipe(sass())
         .pipe(gulp.dest(paths.scss.dest))
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({
+          suffix: '.min'
+        }))
         .pipe(minifyCSS())
         .pipe(gulp.dest(paths.scss.dest));
     }));
@@ -96,10 +102,12 @@ gulp.task('styles', function () {
 /**
  * Stylesheets one time task
  */
-gulp.task('styles-one-time', function () {
+gulp.task('styles-one-time', function() {
   return gulp.src(paths.scss.src).pipe(sass())
     .pipe(gulp.dest(paths.scss.dest))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(minifyCSS())
     .pipe(gulp.dest(paths.scss.dest));
 });
@@ -107,15 +115,17 @@ gulp.task('styles-one-time', function () {
 /**
  * Javascript tasks
  */
-gulp.task('js', function () {
+gulp.task('js', function() {
   gulp.src(paths.watch.js)
-    .pipe(watch(function (files) {
+    .pipe(watch(function(files) {
       gulp.src(paths.scripts.src)
         .pipe(concat(paths.scripts.dest))
         .pipe(gulp.dest(paths.scripts.dir));
 
       gulp.src(paths.scripts.fullDir)
-        .pipe(uglify({outSourceMap: false}))
+        .pipe(uglify({
+          outSourceMap: false
+        }))
         .pipe(concat("scripts.min.js"))
         .pipe(gulp.dest(paths.scripts.dir));
     }));
@@ -125,13 +135,15 @@ gulp.task('js', function () {
 /**
  * Javascript one time tasks
  */
-gulp.task('js-one-time', function () {
+gulp.task('js-one-time', function() {
   gulp.src(paths.scripts.src)
     .pipe(concat(paths.scripts.dest))
     .pipe(gulp.dest(paths.scripts.dir));
 
   gulp.src(paths.scripts.fullDir)
-    .pipe(uglify({outSourceMap: false}))
+    .pipe(uglify({
+      outSourceMap: false
+    }))
     .pipe(concat("scripts.min.js"))
     .pipe(gulp.dest(paths.scripts.dir));
 });
@@ -139,24 +151,44 @@ gulp.task('js-one-time', function () {
 /**
  * Imagemin task
  */
-gulp.task('images', function () {
+gulp.task('images', function() {
   return gulp.src(paths.images.src)
-    // Pass in options to the task
-    .pipe(imagemin({optimizationLevel: 5}))
+  // Pass in options to the task
+  .pipe(imagemin({
+    optimizationLevel: 5
+  }))
     .pipe(gulp.dest(paths.images.dest));
+});
+
+/**
+ * font task
+ */
+gulp.task('fonts', function() {
+  return gulp.src(paths.fonts.src)
+    .pipe(gulp.dest(paths.fonts.dest));
+});
+/**
+ * icon task
+ */
+gulp.task('icons', function() {
+  return gulp.src(paths.icons.src)
+    .pipe(gulp.dest(paths.icons.dest));
 });
 
 /**
  * JSHint task
  */
-gulp.task('lint', function () {
+gulp.task('lint', function() {
   gulp.src(paths.scripts.jsHint)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('html-one-time', function() {
-  var opts = {comments:true,spare:true};
+  var opts = {
+    comments: true,
+    spare: true
+  };
 
   gulp.src(paths.index.src)
     .pipe(minifyHTML(opts))
@@ -174,7 +206,7 @@ gulp.task('html-one-time', function() {
 
 gulp.task('html', function() {
   gulp.src(paths.watch.html)
-    .pipe(watch(function (files) {
+    .pipe(watch(function(files) {
       gulp.src(paths.index.src)
         .pipe(gulp.dest(paths.index.dest))
 
@@ -188,10 +220,24 @@ gulp.task('html', function() {
 /**
  * Bower task
  */
-gulp.task('bowerFiles', function () {
+gulp.task('bowerFiles', function() {
   bowerFiles().pipe(gulp.dest(paths.bowerCopy.dest))
 });
 
-gulp.task('default', ['styles', 'js', 'html']);
+gulp.task('default', [
+  'styles', 
+  'js', 
+  'html', 
+  'fonts', 
+  'icons'
+]);
 
-gulp.task('build', ['styles-one-time', 'js-one-time', 'html-one-time', 'images', 'lint']);
+gulp.task('build', [
+  'styles-one-time',
+  'js-one-time',
+  'html-one-time',
+  'fonts', 
+  'icons',
+  'images',
+  'lint'
+]);

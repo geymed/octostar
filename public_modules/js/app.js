@@ -1,14 +1,22 @@
-var app = angular.module('constella', ['ngRoute']);
+var app = angular.module('constella', [
+	'ngRoute'
+]);
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  // $locationProvider.hashPrefix('!;
+app.config([
+  '$routeProvider',
+  '$locationProvider',
+  function($routeProvider, $locationProvider) {
+    // $locationProvider.hashPrefix('!;
 
-  $routeProvider
-    .when('/', {
-      templateUrl: 'partials/main.html'
-    })
-    .when('/account', {
-      templateUrl: 'partials/account.html'
-    })
-    .otherwise({redirectTo:'/'});
-}]);
+    $routeProvider
+      .when('/', {
+        templateUrl: 'partials/main.html'
+      })
+      .when('/account', {
+        templateUrl: 'partials/account.html'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  }
+]);
