@@ -1,0 +1,65 @@
+{
+  "bowerCopy": {
+    "dest": "build/assets/components"
+  },
+
+  "scripts": {
+    "src": [
+      "public_modules/components/angular/angular.js",
+      "public_modules/components/angular-route/angular-route.js",
+      "public_modules/js/app.js",
+      "public_modules/js/**/*.js"
+    ],
+    "fullDir": "build/assets/js/scripts.js",
+    "dir": "build/assets/js",
+    "dest": "scripts.js",
+    "jsHint": [
+      "public_modules/js/app.js",
+      "public_modules/js/**/*.js"
+    ]
+  },
+  "images": {
+    "src": "public_modules/assets/img/**/*",
+    "dest": "build/assets/img"
+  },
+  "icons": {
+    "src": "public_modules/assets/icons/**/",
+    "dest": "build"
+  },
+  "fonts": {
+    "src": "public_modules/assets/fonts/**/",
+    "dest": "build/assets/fonts"
+  },
+
+  "index": {
+    "src": "public_modules/html/index.html",
+    "dest": "build"
+  },
+  "partials": {
+    "src": "public_modules/html/partials/**/*",
+    "dest": "build/partials"
+  },
+  "layouts": {
+    "src": "public_modules/html/layouts/**/*",
+    "dest": "build/layouts"
+  },
+
+  "scss": {
+    "src": "public_modules/scss/style.scss",
+    "dest": "build/assets/css"
+  },
+
+  "watch": {
+    "styles": [
+      "public_modules/scss/style.scss",
+      "public_modules/scss/**/*.scss"
+    ],
+    "js": [
+      "public_modules/js/app.js",
+      "public_modules/js/**/*.js"
+    ],
+    "html": [
+      "public_modules/html/**/*.html"
+    ]
+  }
+}

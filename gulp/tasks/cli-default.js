@@ -1,3 +1,9 @@
 var gulp = require('gulp');
 
-gulp.task('default', ['watch']);
+gulp.task('default', [
+  'styles', 
+  'js', 
+  'html', 
+  'fonts', 
+  'icons'
+]);

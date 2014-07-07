@@ -1,12 +1,14 @@
-var changed    = require('gulp-changed');
-var gulp       = require('gulp');
-var imagemin   = require('gulp-imagemin');
+var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
+
+var paths = require('../config/paths');
+
 
 gulp.task('images', function() {
-  var dest = './build/images';
-
-  return gulp.src('./src/images/**')
-    .pipe(changed(dest)) // Ignore unchanged files
-    .pipe(imagemin()) // Optimize
-    .pipe(gulp.dest(dest));
+  return gulp.src(paths.images.src)
+  // Pass in options to the task
+  .pipe(imagemin({
+    optimizationLevel: 5
+  }))
+    .pipe(gulp.dest(paths.images.dest));
 });
