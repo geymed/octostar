@@ -9,7 +9,7 @@ var paths = require('../config/paths');
 gulp.task('styles', function() {
   gulp.src(paths.watch.styles)
     .pipe(watch(function(files) {
-      return gulp.src(paths.scss.src).pipe(sass())
+      return gulp.src(paths.scss.src).pipe(sass({sourceComments: 'map'}))
         .pipe(gulp.dest(paths.scss.dest))
         .pipe(rename({
           suffix: '.min'

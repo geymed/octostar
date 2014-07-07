@@ -1,8 +1,8 @@
-var gulp = require('gulp');
+var gulp       = require('gulp');
 
 var minifyHTML = require('gulp-minify-html');
 
-var paths = require('../config/paths');
+var paths      = require('../config/paths');
 
 
 gulp.task('html-one-time', function() {
