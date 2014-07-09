@@ -1,0 +1,31 @@
+label{
+  @include fontsize(super);
+  text-transform:uppercase;
+}
+input[type="text"]{
+  border: none;
+  border-bottom: solid 1px $dark-text-divider;
+  width:100%;
+  position:relative;
+  background:transparent;
+  outline: none;
+  padding-top:10px;
+  padding-bottom: 6px;
+  padding-right:22px;
+  color:$dark-text-main;
+  & ~ i{
+    float:right;
+    position: relative;
+    top: -25px;
+    left: -5px;
+    cursor:pointer;
+  }
+  &:focus{
+    outline: none; 
+    color:$accent-mid;
+    border-bottom:solid 1px $accent-mid;
+    & ~ i{
+      color:$accent-mid;
+    }
+  }
+}

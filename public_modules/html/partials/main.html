@@ -1,15 +1,19 @@
 <div ng-controller="MainCtrl">
 
-  <div id="sidebar">
+  <div id="sidebar"> <!-- ng-include="'partials/sidebar.html'" -->
   	<button class="open-search-btn" ng-click="searchOpen = !searchOpen">
       SEARCH
       <span ng-show="searchOpen"><i class="fa fa-minus"></i></span>
-      <span ng-hide="searchOpen"><i class="fa fa-plus"></i></span>
+      <span ng-hide="searchOpen"><i class="fa fa-search"></i></span>
     </button>
     <div class="searchbox" ng-show="searchOpen">
       <label for="search">Search for name or description</label>
-      <input type="input" name="search" id="search" />
-      <i class="fa fa-search"></i>
+      <input type="text" name="search" id="search" ng-model="searchTerm"/>
+      <i class="fa fa-search" ng-show="searchTerm.length == 0"></i>
+      <i class="fa fa-times" 
+        ng-show="searchTerm.length > 0"
+        ng-click="searchTerm = ''"
+        ></i>
       <h5>RESULTS ({{numofresults}})</h5>
       <ul class="results-list">
         <li 
@@ -20,35 +24,47 @@
         </li>
       </ul>
     </div>
-    <h3>Filter</h3>
-    <select class="languagefilter">
-      <option selected>by language</option>
-      <option 
-        ng-repeat="lang in allLangs"
-        ng-click="togglefilter(lang)"
-        >
-        {{lang.prettyName}}
-      </option>
-    </select>
-    <select class="tagfilter">
-      <option selected>by tag</option>
-      <option 
-        ng-repeat="tag in allTags"
-        ng-click="toggletag(tag)"
-        >
-        {{tag.prettyName}}
-      </option>
-    </select>
+    <h3>Filters</h3>
     <ul class="filters-list" ng-show="allFilters.length > 0">
         <li 
           ng-repeat="filter in allFilters"
           ng-click="removefilter(filter)"
           >
-          {{filter.pretyName}}
+          {{filter.prettyName}}
         </li>
       </ul>
+    <button class="open-filter-btn" ng-click="filterOpen = !filterOpen">
+      Add Filter
+      <span ng-show="filterOpen"><i class="fa fa-minus"></i></span>
+      <span ng-hide="filterOpen"><i class="fa fa-plus"></i></span>
+    </button>
+    <div class="filterbox" ng-show="filterOpen">
+      <ul class="filter-list">
+        <li 
+          ng-repeat="filter in allfilters"
+          ng-click="filter(filter)"
+          >
+          {{filter.type}} {{filter.prettyName}}
+        </li>
+      </ul>
+    </div>
+    
+    <button class="open-tag-btn" ng-click="tagOpen = !tagOpen">
+      Create New Tag
+      <span ng-show="tagOpen"><i class="fa fa-pencil-square-o"></i></span>
+      <span ng-hide="tagOpen"><i class="fa fa-pencil-square-o"></i></span>
+    </button>
+    <div class="tagbox" ng-show="tagOpen">
+    <label for="search">Enter a name for your new tag</label>
+      <input type="text" name="newtag" id="newtag" ng-model="newtagTerm"/>
+      <i class="fa fa-tag" ng-show="newtagTerm.length == 0"></i>
+      <i class="fa fa-times" 
+        ng-show="newtagTerm.length > 0"
+        ng-click="newtagTerm = ''"
+        ></i>
+    </div>
   </div>
-  <div id="maincontainer">
+  <div id="maincontainer"> <!-- ng-include="'partials/repocontainer.html'" -->
   	
     <div id="repocontainer">
       Repos go here

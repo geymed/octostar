@@ -7,6 +7,9 @@
     ref: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
 */
 
+$white:#fff;
+
+
 $main-mid:#607d8b;
 $main-light:#cfd8dc;
 $main-dark:#455a64;
@@ -26,3 +29,4 @@ $light-text-main:rgba(255,255,255,.87);
 $light-text-secondary:rgba(255,255,255,.54);
 $light-text-hint:rgba(255,255,255,.26);
 $light-text-divider:rgba(255,255,255,.12);
+$light-background:lighten($main-light, 10%);
