@@ -1,5 +1,6 @@
 var app = angular.module('constella', [
-	'ngRoute'
+	'ngRoute',
+  'wu.masonry'
 ]);
 
 app.config([

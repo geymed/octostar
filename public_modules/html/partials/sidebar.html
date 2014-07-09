@@ -1,0 +1,62 @@
+    <button class="open-search-btn" ng-click="searchOpen = !searchOpen">
+      SEARCH
+      <span ng-show="searchOpen"><i class="fa fa-minus"></i></span>
+      <span ng-hide="searchOpen"><i class="fa fa-search"></i></span>
+    </button>
+    <div class="searchbox" ng-show="searchOpen">
+      <label for="search">Search for name or description</label>
+      <input type="text" name="search" id="search" ng-model="searchTerm"/>
+      <i class="fa fa-search" ng-show="searchTerm.length == 0"></i>
+      <i class="fa fa-times" 
+        ng-show="searchTerm.length > 0"
+        ng-click="searchTerm = ''"
+        ></i>
+      <h5>RESULTS ({{numofresults}})</h5>
+      <ul class="results-list">
+        <li 
+          ng-repeat="resulttype in resulttypes"
+          ng-click="filterfurther(resulttype)"
+          >
+          {{resulttype.name}} ({{resulttype.amount}})
+        </li>
+      </ul>
+    </div>
+    <h3>Filters</h3>
+    <ul class="filters-list" ng-show="allFilters.length > 0">
+        <li 
+          ng-repeat="filter in allFilters"
+          ng-click="removefilter(filter)"
+          >
+          {{filter.prettyName}}
+        </li>
+      </ul>
+    <button class="open-filter-btn" ng-click="filterOpen = !filterOpen">
+      Add Filter
+      <span ng-show="filterOpen"><i class="fa fa-minus"></i></span>
+      <span ng-hide="filterOpen"><i class="fa fa-plus"></i></span>
+    </button>
+    <div class="filterbox" ng-show="filterOpen">
+      <ul class="filter-list">
+        <li 
+          ng-repeat="filter in allfilters"
+          ng-click="filter(filter)"
+          >
+          {{filter.type}} {{filter.prettyName}}
+        </li>
+      </ul>
+    </div>
+    
+    <button class="open-tag-btn" ng-click="tagOpen = !tagOpen">
+      Create New Tag
+      <span ng-show="tagOpen"><i class="fa fa-pencil-square-o"></i></span>
+      <span ng-hide="tagOpen"><i class="fa fa-pencil-square-o"></i></span>
+    </button>
+    <div class="tagbox" ng-show="tagOpen">
+    <label for="search">Enter a name for your new tag</label>
+      <input type="text" name="newtag" id="newtag" ng-model="newtagTerm"/>
+      <i class="fa fa-tag" ng-show="newtagTerm.length == 0"></i>
+      <i class="fa fa-times" 
+        ng-show="newtagTerm.length > 0"
+        ng-click="newtagTerm = ''"
+        ></i>
+    </div>
