@@ -1,7 +1,52 @@
 <div ng-controller="MainCtrl">
 
   <div id="sidebar">
-  	Sidebar Content
+  	<button class="open-search-btn" ng-click="searchOpen = !searchOpen">
+      SEARCH
+      <span ng-show="searchOpen"><i class="fa fa-minus"></i></span>
+      <span ng-hide="searchOpen"><i class="fa fa-plus"></i></span>
+    </button>
+    <div class="searchbox" ng-show="searchOpen">
+      <label for="search">Search for name or description</label>
+      <input type="input" name="search" id="search" />
+      <i class="fa fa-search"></i>
+      <h5>RESULTS ({{numofresults}})</h5>
+      <ul class="results-list">
+        <li 
+          ng-repeat="resulttype in resulttypes"
+          ng-click="filterfurther(resulttype)"
+          >
+          {{resulttype.name}} ({{resulttype.amount}})
+        </li>
+      </ul>
+    </div>
+    <h3>Filter</h3>
+    <select class="languagefilter">
+      <option selected>by language</option>
+      <option 
+        ng-repeat="lang in allLangs"
+        ng-click="togglefilter(lang)"
+        >
+        {{lang.prettyName}}
+      </option>
+    </select>
+    <select class="tagfilter">
+      <option selected>by tag</option>
+      <option 
+        ng-repeat="tag in allTags"
+        ng-click="toggletag(tag)"
+        >
+        {{tag.prettyName}}
+      </option>
+    </select>
+    <ul class="filters-list" ng-show="allFilters.length > 0">
+        <li 
+          ng-repeat="filter in allFilters"
+          ng-click="removefilter(filter)"
+          >
+          {{filter.pretyName}}
+        </li>
+      </ul>
   </div>
   <div id="maincontainer">
   	
