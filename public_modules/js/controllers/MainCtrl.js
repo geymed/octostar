@@ -6,7 +6,7 @@ controllers.controller('MainCtrl', ['$scope', 'Stars', '$timeout', function ($sc
   $scope.searchTerm = '';
   $scope.tagTerm = '';
   $scope.repos = {remote:[], local:[]};
-  $scope.lastSynced = '';
+  $scope.lastSynced = false;
   $scope.langs = [];
   $scope.reposLoaded = false; 
 
@@ -23,6 +23,7 @@ controllers.controller('MainCtrl', ['$scope', 'Stars', '$timeout', function ($sc
   }
   Stars.get(_updateData);
   $scope.triggerSync = function(){
+    $scope.lastSynced = false;
   	Stars.get(_updateData, true);
   };
 }]);

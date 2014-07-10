@@ -1,6 +1,6 @@
-<div class="syncbox">
-  <span class="syncing">Retrieving Stars...</span>
-  <span class="last-synced">Last synced {{lastSynced}}</span>
+<div class="syncbox clearfix">
+  <span class="sync syncing" ng-hide="lastSynced">Retrieving Stars...</span>
+  <span class="sync last-synced" ng-show="lastSynced">Last synced {{lastSynced}}</span>
   <button class="resync" ng-click="triggerSync()">
     <i class="fa fa-refresh"></i>
   </button>
