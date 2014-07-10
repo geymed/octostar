@@ -32,7 +32,9 @@
     "EventEmitter": "~1.1.0",
     "get-style-property": "desandro/get-style-property#~1.0.3",
     "imagesloaded": "~3.1.8",
-    "matches-selector": "desandro/matches-selector#~1.0.2"
+    "matches-selector": "desandro/matches-selector#~1.0.2",
+    "moment": "~2.7.0",
+    "lodash": "~2.4.1"
   },
   "overrides": {
     "modernizr": {

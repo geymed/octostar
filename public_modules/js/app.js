@@ -1,7 +1,15 @@
-var app = angular.module('constella', [
-	'ngRoute',
-  'wu.masonry'
-]);
+var app,
+    services =    angular.module('constella.services',    []),
+    directives =  angular.module('constella.directives',  []),
+    filters =     angular.module('constella.filters',     []),
+    controllers = angular.module('constella.controllers', []);
+
+app = angular.module('constella', ['constella.services',
+                                   'constella.directives',
+                                   'constella.filters',
+                                   'constella.controllers',
+                                   'ngRoute',
+                                   'wu.masonry']);
 
 app.config([
   '$routeProvider',

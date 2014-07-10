@@ -7,8 +7,10 @@ gulp.task('html', function() {
   gulp.src(paths.watch.html)
     .pipe(watch(function(files) {
       gulp.src(paths.index.src)
-        .pipe(gulp.dest(paths.index.dest))
+      .pipe(gulp.dest(paths.index.dest))
 
+    gulp.src(paths.login.src)
+      .pipe(gulp.dest(paths.login.dest))
       gulp.src(paths.partials.src)
         .pipe(gulp.dest(paths.partials.dest))
 

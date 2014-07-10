@@ -35,6 +35,10 @@
     "src": "public_modules/html/index.html",
     "dest": "build"
   },
+  "login": {
+    "src": "public_modules/html/login.html",
+    "dest": "build"
+  },
   "partials": {
     "src": "public_modules/html/partials/**/*",
     "dest": "build/partials"

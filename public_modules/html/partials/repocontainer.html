@@ -1,29 +1,18 @@
+<div class="loader" v-show="lastSynced == ''">
+  <span class="loadbar load-1"></span><span class="loadbar load-2"></span>
+  <span class="loadbar load-3"></span><span class="loadbar load-4"></span>
+  <span class="loadbar load-5"></span><span class="loadbar load-6"></span>
+  <span class="loadbar load-7"></span>
+</div>
 <div id="repocontainer" 
   masonry 
   item-selector=".repo" 
   >
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
-    This is a repo
-  </div>
-  <div class="repo">
+  <div 
+    class="repo"
+    ng-repeat="repo in repos.remote"
+    data-lang="{{repo.lang}}"
+    >
     This is a repo
   </div>
 </div>

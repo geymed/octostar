@@ -1,4 +1,4 @@
-app.controller('AccountCtrl', ['$scope', function ($scope) {
+controllers.controller('AccountCtrl', ['$scope', function ($scope) {
 
   'use strict';
 
