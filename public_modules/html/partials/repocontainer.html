@@ -9,13 +9,13 @@
   item-selector=".repo" 
   >
   <repo
-    ng-repeat="repo in repos.remote | filter:searchTerm"
+    ng-repeat="repo in repos.remote | filter:$parent.searchTerm"
     repoobject="repo"
     data-language='{{repo.language}}' 
     data-name='{{repo.name}}' 
     data-owner='{{repo.owner.login}}' 
     data-created='{{repo.created_at}}' 
     data-tag='{{repo.tags}}'
-    class='repo {{repo.language}} repo-{{repo.created_at}}'
+    class='repo {{repo.language | slug}} repo-{{repo.created_at}}'
     ></repo>
 </div>

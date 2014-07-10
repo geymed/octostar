@@ -1,4 +1,10 @@
-<h5 title="{{repo.name}}" v-on="click:open = !open" class="title">{{repo.name}} </h5>
+<h5 title="{{repo.name}}" v-on="click:open = !open" class="title">
+	{{repo.name | titlebrief}} 
+	<a href="{{repo.clone_url}}" target="_blank" class="url">
+		<i class="small fa fa-external-link"></i>
+	</a>
+	<span class="language {{repo.language | slug}}">{{repo.language || 'Unknown'}} </span>
+</h5>
 <i v-show="!open" v-on="click:open = true" class="openthis fa fa-caret-right"></i>
 <i v-show="open" v-on="click:open = false" class="openthis fa fa-caret-down"></i>
 
@@ -12,10 +18,7 @@
 	<i v-show="selected" class="fa fa-check-square-o"></i>
 	<i v-show="!selected" class="fa fa-square-o"></i>
 </label>
+{{repo.owner.login}} 
 
-<span class="language {{repo.language | lowercase}}">{{repo.language || 'Unknown'}} </span>
-<a href="{{repo.clone_url}}" target="_blank" class="url small">
-	{{repo.owner.login}} 
-	<i class="small fa fa-external-link"></i>
-	</a>
+
 <p v-show="open" class="description">{{repo.description}}</p>
