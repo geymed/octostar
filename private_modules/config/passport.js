@@ -108,8 +108,18 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
  */
 
 exports.isAuthenticated = function(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.json(false);
+  if(!res){
+    if (req.isAuthenticated()) {
+      return true;
+    }
+    return false
+  }
+  else{
+    if (req.isAuthenticated()){
+      return next();
+    }
+    res.json(false);
+  }
 };
 
 /**
@@ -117,7 +127,7 @@ exports.isAuthenticated = function(req, res, next) {
  */
 
 exports.isAuthorized = function(req, res, next) {
-  var provider = req.path.split('/').slice(-1)[0];
+  var provider = req.path.split('/').slice(-1)[0];  
   if (_.findWhere(req.user.tokens, {
     kind: provider
   })) next();

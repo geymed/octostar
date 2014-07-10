@@ -5,6 +5,10 @@ controllers.controller('MainCtrl', ['$scope', 'Stars', function ($scope, Stars) 
   // controller things
   $scope.searchTerm = '';
   $scope.tagTerm = '';
+  $scope.repos = {remote:[], local:[]};
+  $scope.lastSynced = '';
+  $scope.langs = [];
+
   function _updateData(){
   	$scope.repos = Stars.repos;
 		$scope.lastSynced = Stars.lastSynced;

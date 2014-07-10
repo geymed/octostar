@@ -40,12 +40,12 @@ var month = (day * 30);
 
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('ip_address', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.use(connectAssets({
-  paths: ['build/css', 'build/js', 'build/components'],
-  helperContext: app.locals
-}));
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+// app.use(connectAssets({
+//   paths: ['build/css', 'build/js', 'build/components'],
+//   helperContext: app.locals
+// }));
 
 app.use(express.compress());
 app.use(express.favicon("build/favicon.ico")); 
@@ -72,46 +72,60 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(flash());
-app.use(express.static(path.join(__dirname, 'build'), { maxAge: month }));
+
+// app.use(express.static(path.join(__dirname, 'build'), { maxAge: month }));
 app.use(function(req, res, next) {
-  // Keep track of previous URL
-  if (req.method !== 'GET') return next();
+  if (req.method !== 'GET') { // if this is an api post call
+    return next();
+  }
+  var authenticated = passportConf.isAuthenticated(req);
   var path = req.path.split('/')[1];
-  if (/(auth|login|logout|signup)$/.test(path)) return next();
-  req.session.returnTo = req.path;
-  next();
+  if (authenticated && (/(login)$/.test(path))) { // check if authorized or if going to open route
+    res.redirect("/");
+  }  
+  else if (authenticated || (/(auth|login|logout)$/.test(path))) { // check if authorized or if going to open route
+    return next();
+  }  
+  else {
+    res.redirect("/login");
+  }
 });
+app.use('/login', express.static(__dirname + '/login'));
+
 app.use(app.router);
 app.use(function(req, res) {
   res.status(404);
-  res.render('404');
+  res.redirect('/login');
 });
 app.use(express.errorHandler());
 
 // * Application routes.
 
-app.get('/', homeCtrl.index);
-app.get('/login', function(req, res){
-  res.redirect('/');
-});
 
 app.get('/logout', accountCtrl.logout);
 
-app.get('/account', passportConf.isAuthenticated, accountCtrl.getAccount);
-app.post('/account/profile', passportConf.isAuthenticated, accountCtrl.postUpdateProfile);
-app.post('/account/delete', passportConf.isAuthenticated, accountCtrl.postDeleteAccount);
+// app.get('/account', passportConf.isAuthenticated, accountCtrl.getAccount);
+// app.post('/account/profile', passportConf.isAuthenticated, accountCtrl.postUpdateProfile);
+// app.post('/account/delete', passportConf.isAuthenticated, accountCtrl.postDeleteAccount);
 
 // * OAuth routes for sign-in.
 
 app.get('/auth/github', passport.authenticate('github'));
-app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), function(req, res) {
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
   res.redirect('/');
 });
 
 // Routes requiring login
 
+app.get('api/account/user', passportConf.isAuthenticated, function(){});
+app.post('api/account/user', passportConf.isAuthenticated, function(){});
+app.delete('api/account/user', passportConf.isAuthenticated, function(){});
+
 app.get('/api/account/sync', passportConf.isAuthenticated, apiCtrl.account.starSync);
 app.get('/api/account/stars', passportConf.isAuthenticated, apiCtrl.account.getStars);
+
+
+app.get('/*', express.static(__dirname + '/build'));
 
 // * Start Express server.
 
