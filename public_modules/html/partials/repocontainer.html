@@ -8,11 +8,14 @@
   masonry 
   item-selector=".repo" 
   >
-  <div 
-    class="repo"
-    ng-repeat="repo in repos.remote"
-    data-lang="{{repo.lang}}"
-    >
-    This is a repo
-  </div>
+  <repo
+    ng-repeat="repo in repos.remote | filter:searchTerm"
+    repoobject="repo"
+    data-language='{{repo.language}}' 
+    data-name='{{repo.name}}' 
+    data-owner='{{repo.owner.login}}' 
+    data-created='{{repo.created_at}}' 
+    data-tag='{{repo.tags}}'
+    class='repo {{repo.language}} repo-{{repo.created_at}}'
+    ></repo>
 </div>

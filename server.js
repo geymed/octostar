@@ -74,23 +74,8 @@ app.use(function(req, res, next) {
 app.use(flash());
 
 // app.use(express.static(path.join(__dirname, 'build'), { maxAge: month }));
-app.use(function(req, res, next) {
-  if (req.method !== 'GET') { // if this is an api post call
-    return next();
-  }
-  var authenticated = passportConf.isAuthenticated(req);
-  var path = req.path.split('/')[1];
-  if (authenticated && (/(login)$/.test(path))) { // check if authorized or if going to open route
-    res.redirect("/");
-  }  
-  else if (authenticated || (/(auth|login|logout)$/.test(path))) { // check if authorized or if going to open route
-    return next();
-  }  
-  else {
-    res.redirect("/login");
-  }
-});
 app.use('/login', express.static(__dirname + '/login'));
+
 
 app.use(app.router);
 app.use(function(req, res) {
@@ -99,7 +84,13 @@ app.use(function(req, res) {
 });
 app.use(express.errorHandler());
 
-// * Application routes.
+
+
+
+/**************************/
+
+
+// * app.router
 
 
 app.get('/logout', accountCtrl.logout);
@@ -125,12 +116,23 @@ app.get('/api/account/sync', passportConf.isAuthenticated, apiCtrl.account.starS
 app.get('/api/account/stars', passportConf.isAuthenticated, apiCtrl.account.getStars);
 
 
-app.get('/*', express.static(__dirname + '/build'));
+app.get('/*', requireLogin, express.static(__dirname + '/build'));
+
+
+/******************************/
+
 
 // * Start Express server.
 
 app.listen(app.get('port'), app.get('ip_address'), function() {
   console.log("✔ Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
 });
+
+function requireLogin(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  next();
+}
 
 module.exports = app;

@@ -1,0 +1,21 @@
+<i v-show="!open" v-on="click:open = true" class="openthis fa fa-caret-right"></i>
+<i v-show="open" v-on="click:open = false" class="openthis fa fa-caret-down"></i>
+
+<input 
+	type="checkbox" 
+	v-model="selected" 
+	name="select-repo-{{repo.created_at}}" 
+	id="select-repo-{{repo.created_at}}" 
+	class="reposelect"/>
+<label for="select-repo-{{repo.created_at}}" class="reposelectlabel">
+	<i v-show="selected" class="fa fa-check-square-o"></i>
+	<i v-show="!selected" class="fa fa-square-o"></i>
+</label>
+
+<h5 title="{{repo.name}}" v-on="click:open = !open" class="title">{{repo.name}} </h5>
+<span class="language {{repo.language | lowercase}}">{{repo.language || 'Unknown'}} </span>
+<a href="{{repo.clone_url}}" target="_blank" class="url small">
+	{{repo.owner.login}} 
+	<i class="small fa fa-external-link"></i>
+	</a>
+<p v-show="open" class="description">{{repo.description}}</p>
